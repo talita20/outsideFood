@@ -38,7 +38,7 @@ class Espacos{
 
 	public function insert(){
 		try{
-			-- $stmt = $this->conn->prepare("INSERT INTO `espacos`(`nome`,`aluguel`,`metragem`,`benfeitoria`) VALUES (:nome, :aluguel, :metragem, :benfeitoria)");
+			$stmt = $this->conn->prepare("INSERT INTO `espacos`(`nome`,`aluguel`,`metragem`,`benfeitoria`) VALUES (:nome, :aluguel, :metragem, :benfeitoria)");
 			$stmt->bindParam(":nome", $this->nome);
 			$stmt->bindParam(":aluguel", $this->aluguel);
 			$stmt->bindParam(":metragem", $this->metragem);

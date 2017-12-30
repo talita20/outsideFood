@@ -53,12 +53,11 @@ class Edicoes{
 
 	public function edit(){
 		try{
-			$stmt = $this->conn->prepare("UPDATE `edicoes` SET `numero` = :numero, `capacidade` = :capacidade, `lotacao` = :lotacao, `eventos_id` = :eventos_id  WHERE `id` = :id");
+			$stmt = $this->conn->prepare("UPDATE `edicoes` SET `numero` = :numero, `capacidade` = :capacidade, `lotacao` = :lotacao WHERE `id` = :id");
 			$stmt->bindParam(":id", $this->id);
 			$stmt->bindParam(":numero", $this->numero);
 			$stmt->bindParam(":capacidade", $this->capacidade);
-			$stmt->bindParam(":lotacao", $this->lotacao);
-			$stmt->bindParam(":eventos_id", $this->eventos_id);		
+			$stmt->bindParam(":lotacao", $this->lotacao);		
 			$stmt->execute();
 			return 1;
 		}catch(PDOException $e){

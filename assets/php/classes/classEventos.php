@@ -41,7 +41,7 @@ class Eventos{
 
 	public function insert(){
 		try{
-			-- $stmt = $this->conn->prepare("INSERT INTO `eventos`(`nome`,`data`,`horario`,`organizador`,`foto`) VALUES   (:nome, :data, :horario, :organizador, :foto)");
+			$stmt = $this->conn->prepare("INSERT INTO `eventos`(`nome`,`data`,`horario`,`organizador`,`foto`) VALUES   (:nome, :data, :horario, :organizador, :foto)");
 			$stmt->bindParam(":nome", $this->nome);
 			$stmt->bindParam(":data", $this->data);
 			$stmt->bindParam(":horario", $this->horario);
