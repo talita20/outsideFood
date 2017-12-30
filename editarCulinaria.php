@@ -111,6 +111,7 @@ if(isset($_POST['delete'])){
 										<div class="form-group">
 											<label>Tipo de Culinária</label>
 											<input type="text" name="tipo_culinaria" class="form-control" value="<?php echo $row->tipo_culinaria ?>" required>
+											<!-- Duvida em Tempo -->
 											<label>Tempo</label>
 											<input type="text" name="tempo" value="<?php echo $row->tempo ?>" class= "form-control"  required>
 											
@@ -153,16 +154,5 @@ if(isset($_POST['delete'])){
 		</html>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script>
-			function moeda(z) {
-				v = z.value;
-        v = v.replace(/\D/g, "") // permite digitar apenas numero
-        v = v.replace(/(\d{1})(\d{14})$/, "$1.$2") // coloca ponto antes dos ultimos digitos
-        v = v.replace(/(\d{1})(\d{11})$/, "$1.$2") // coloca ponto antes dos ultimos 11 digitos
-        v = v.replace(/(\d{1})(\d{8})$/, "$1.$2") // coloca ponto antes dos ultimos 8 digitos
-        v = v.replace(/(\d{1})(\d{5})$/, "$1.$2") // coloca ponto antes dos ultimos 5 digitos
-        v = v.replace(/(\d{1})(\d{1,2})$/, "$1,$2") // coloca virgula antes dos ultimos 2 digitos
-        z.value = v;
-    }
-</script>
+		
 

@@ -2,7 +2,7 @@
 
 require_once "database.php";
 
-class Pratos{
+class Culinaria{
 
 	private $id;
 	private $tipo_culinaria;
@@ -32,7 +32,7 @@ class Pratos{
 
 	public function insert(){
 		try{
-			-- $stmt = $this->conn->prepare("INSERT INTO `culinaria`(`tipo_culinaria`,`tempo`) VALUES (:tipo_culinaria, :tempo)");
+			$stmt = $this->conn->prepare("INSERT INTO `culinaria`(`tipo_culinaria`,`tempo`) VALUES (:tipo_culinaria, :tempo)");
 			$stmt->bindParam(":tipo_culinaria", $this->tipo_culinaria);
 			$stmt->bindParam(":tempo", $this->tempo);				
 			$stmt->execute();

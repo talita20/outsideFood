@@ -11,7 +11,7 @@ if(isset($_POST['insert'])){
 	
 
 	if($culinaria->insert() == 1){
-		$result = "Evento inserido com sucesso!";
+		$result = "Culinária inserida com sucesso!";
 	}else{
 		$error = "Erro ao inserir";
 	}
@@ -55,6 +55,7 @@ if(isset($_POST['cancel'])){
 			<div class="form-group">
 				<label>Tipo de Culinária</label>
 				<input type="text" name="tipo_culinaria" class="form-control">
+				<!-- Duvida com Tempo -->
 				<label>Tempo</label>
 				<input type="int" name="tempo" class="form-control" >
 				
