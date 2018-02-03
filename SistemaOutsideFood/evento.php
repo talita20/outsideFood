@@ -5,7 +5,7 @@
             <div class="content">
  				<div class="container-fluid">
                     <div class="collapse navbar-collapse">
-                    <a href="">
+                    <a href="./adicionarevento.php">
                      	<button type="button" class="btn btn-warning">Adicionar</button>
                  	</a>
                        <form class="navbar-form navbar-right" role="search">

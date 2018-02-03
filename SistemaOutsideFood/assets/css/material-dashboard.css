@@ -13,11 +13,40 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
  */
+/*subir arquivo*/
+
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
+
+
+
+.formulario:hover{
+    color: transparent;
+}
 
 #btnamarelo{
     background-color: #f1c40f;
 }
-
 
 #imgevento{
     height: 70px;
@@ -1215,7 +1244,7 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.btn-default.active {
 .open>.navbar .navbar-nav>li>a.btn.btn-primary.dropdown-toggle,
 .open>.navbar .navbar-nav>li>a.btn.btn-primary.dropdown-toggle:focus,
 .open>.navbar .navbar-nav>li>a.btn.btn-primary.dropdown-toggle:hover {
-    background-color: #9c27b0;
+    background-color: #F1C40F;
     color: #FFFFFF;
 }
 
@@ -2332,7 +2361,7 @@ fieldset[disabled] .navbar .navbar-nav>li>a.btn.btn-rose.active {
 
 .btn-group.open>.dropdown-toggle.btn.btn-primary,
 .btn-group-vertical.open>.dropdown-toggle.btn.btn-primary {
-    background-color: #9c27b0;
+    background-color: #F1C40F;
 }
 
 .btn-group.open>.dropdown-toggle.btn.btn-success,
@@ -2774,7 +2803,7 @@ output {
 .form-control,
 .form-group .form-control {
     border: 0;
-    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#F1C40F, #F1C40F), linear-gradient(#D2D2D2, #D2D2D2);
     background-size: 0 2px, 100% 1px;
     background-repeat: no-repeat;
     background-position: center bottom, center calc(100% - 1px);
@@ -2848,14 +2877,14 @@ fieldset[disabled] .form-group .form-control {
 
 .form-group.is-focused .form-control {
     outline: none;
-    background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+    background-image: linear-gradient(#F1C40F, #F1C40F), linear-gradient(#D2D2D2, #D2D2D2);
     background-size: 100% 2px, 100% 1px;
     box-shadow: none;
     transition-duration: 0.3s;
 }
 
 .form-group.is-focused .form-control .material-input:after {
-    background-color: #9c27b0;
+    background-color: #F1C40F;
 }
 
 .form-group.is-focused.form-info .form-control {
@@ -3605,7 +3634,7 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
 }
 
 .checkbox input[type=checkbox]:checked+.checkbox-material .check {
-    background: #9c27b0;
+    background: ;
 }
 
 .checkbox input[type=checkbox]:checked+.checkbox-material .check:before {
@@ -3742,7 +3771,7 @@ fieldset[disabled] .form-group.is-focused .radio label {
     height: 15px;
     width: 15px;
     border-radius: 100%;
-    background-color: #9c27b0;
+    background-color: #F1C40F;
     transform: scale3d(0, 0, 0);
 }
 
@@ -3783,11 +3812,11 @@ fieldset[disabled] .form-group.is-focused .radio label {
 }
 
 .radio input[type=radio]:checked~.check {
-    background-color: #9c27b0;
+    background-color: #F1C40F;
 }
 
 .radio input[type=radio]:checked~.circle {
-    border-color: #9c27b0;
+    border-color: #F1C40F;
 }
 
 .radio input[type=radio]:checked~.check {
@@ -3918,7 +3947,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:after {
-    border-color: #9c27b0;
+    border-color: #F1C40F;
 }
 
 .togglebutton label input[type=checkbox]:checked+.toggle:active:after {
@@ -4006,8 +4035,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .pagination>.active>span,
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {
-    background-color: #9c27b0;
-    border-color: #9c27b0;
+    background-color: #F1C40F;
+    border-color: #F1C40F;
     color: #FFFFFF;
     box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2);
 }
@@ -4092,7 +4121,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .nav-pills>li.active>a,
 .nav-pills>li.active>a:focus,
 .nav-pills>li.active>a:hover {
-    background-color: #9c27b0;
+    background-color: #F1C40F;
     color: #FFFFFF;
     box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
@@ -4564,7 +4593,7 @@ fieldset[disabled] .navbar .btn-link:focus {
 }
 
 .navbar.navbar-primary {
-    background-color: #9c27b0;
+    background-color: #F1C40F;
     color: #ffffff;
 }
 
@@ -4590,12 +4619,12 @@ fieldset[disabled] .navbar .btn-link:focus {
 .navbar.navbar-primary .dropdown-menu li>a:hover,
 .navbar.navbar-primary .dropdown-menu li>a:focus {
     color: #FFFFFF;
-    background-color: #9c27b0;
+    background-color: #F1C40F;
     box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
 
 .navbar.navbar-primary .dropdown-menu .active>a {
-    background-color: #9c27b0;
+    background-color: #F1C40F;
     color: #ffffff;
     box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
@@ -5057,7 +5086,7 @@ footer .btn {
 .dropdown-menu li a:hover,
 .dropdown-menu li a:focus,
 .dropdown-menu li a:active {
-    background-color: #9c27b0;
+    background-color: #F1C40F;
     color: #FFFFFF;
 }
 
@@ -5071,7 +5100,7 @@ footer .btn {
 .navbar.navbar-default .dropdown-menu li a:hover,
 .navbar.navbar-default .dropdown-menu li a:focus,
 .navbar.navbar-default .dropdown-menu li a:active {
-    background-color: #9c27b0;
+    background-color:#F1C40F;
     color: #FFFFFF;
     box-shadow: 0 12px 20px -10px rgba(156, 39, 176, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(156, 39, 176, 0.2);
 }
@@ -5440,7 +5469,7 @@ footer .btn {
 }
 
 .nav-tabs {
-    background: #9c27b0;
+    background: #F1C40F;
     border: 0;
     border-radius: 3px;
     padding: 0 15px;
@@ -5704,12 +5733,12 @@ footer .btn {
 .ct-series-d .ct-line,
 .ct-series-d .ct-bar,
 .ct-series-d .ct-slice-donut {
-    stroke: #9c27b0;
+    stroke: #F1C40F;
 }
 
 .ct-series-d .ct-slice-pie,
 .ct-series-d .ct-area {
-    fill: #9c27b0;
+    fill: #F1C40F;
 }
 
 .ct-series-e .ct-point,
@@ -6321,7 +6350,7 @@ footer .btn {
 }
 
 .ct-blue {
-    stroke: #9c27b0 !important;
+    stroke: #F1C40F !important;
 }
 
 .ct-azure {
