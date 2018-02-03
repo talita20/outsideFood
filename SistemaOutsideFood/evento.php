@@ -1,7 +1,13 @@
 <?php
 	require_once 'header.php';
+    require_once 'assets/php/classes/classEventos.php';
+
+
+
+    $eventos = New Eventos();
 
 ?>
+
             <div class="content">
  				<div class="container-fluid">
                     <div class="collapse navbar-collapse">
@@ -41,58 +47,24 @@
                                             <th class="actions">Ações</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Rouge</td>
-                                                <td>02/02/2018</td>
-                                                <td>22:00</td>
-                                                <td>Sympla</td>
-                                                <td>Belo Horizonte</td>
-                                                <td>Music Hall</td>
-                                                <td><img id="imgevento" src="assets/img/img1.png"></td>
-                                                <td class="action">
-                                                	<a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
-                                                	<a href=""><i class="material-icons">mode_edit</i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Rouge</td>
-                                                <td>02/02/2018</td>
-                                                <td>22:00</td>
-                                                <td>Sympla</td>
-                                                <td>Belo Horizonte</td>
-                                                <td>Music Hall</td>
-                                                <td><img id="imgevento" src="assets/img/img1.png"></td>
-                                                <td class="action">
-                                                	<a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
-                                                	<a href=""><i class="material-icons">mode_edit</i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Rouge</td>
-                                                <td>02/02/2018</td>
-                                                <td>22:00</td>
-                                                <td>Sympla</td>
-                                                <td>Belo Horizonte</td>
-                                                <td>Music Hall</td>
-                                                <td><img id="imgevento" src="assets/img/img1.png"></td>
-                                                <td class="action">
-                                                	<a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
-                                                	<a href=""><i class="material-icons">mode_edit</i></a>
-                                                </td>
-                                            </tr>              
-                                            <tr>
-                                                <td>Rouge</td>
-                                                <td>02/02/2018</td>
-                                                <td>22:00</td>
-                                                <td>Sympla</td>
-                                                <td>Belo Horizonte</td>
-                                                <td>Music Hall</td>
-                                                <td><img id="imgevento" src="assets/img/img1.png"></td>
-                                                <td class="action">                       
-                                                	<a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
-                                                	<a href=""><i class="material-icons">mode_edit</i></a>
-                                                </td>
-                                            </tr>                             
+                                            
+                                                <?php
+
+                                                    $todosEventos = $eventos->index();
+                                                    while($row = $todosEventos->fetch(PDO::FETCH_OBJ)){
+                                                ?>
+                                                <tr>
+
+                                                    <td class="nome"><?php echo $row->nome; ?></t>
+                                                </tr>
+
+
+                                                <?php
+
+                                                    }
+
+                                                ?>
+                                                                    
                                         </tbody>
                                     </table>
                                 </div>
