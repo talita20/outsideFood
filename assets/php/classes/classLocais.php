@@ -29,7 +29,7 @@ class Locais{
 
 	public function insert(){
 		try{
-			$stmt = $this->conn->prepare("INSERT INTO `cidades`(`nome`, `cidades_id`) VALUES (:nome, :cidades_id)");
+			$stmt = $this->conn->prepare("INSERT INTO `locais`(`nome`, `cidades_id`) VALUES (:nome, :cidades_id)");
 			$stmt->bindParam(":nome", $this->nome);
 			$stmt->bindParam(":cidades_id", $this->cidades_id);
 			$stmt->execute();
@@ -42,7 +42,7 @@ class Locais{
 
 	public function edit(){
 		try{
-			$stmt = $this->conn->prepare("UPDATE `cidades` SET `nome` = :nome, `cidades_id` = :cidades_id WHERE `id` = :id");
+			$stmt = $this->conn->prepare("UPDATE `locais` SET `nome` = :nome, `cidades_id` = :cidades_id WHERE `id` = :id");
 			$stmt->bindParam(":id", $this->id);
 			$stmt->bindParam(":nome", $this->nome);
 			$stmt->bindParam(":cidades_id", $this->cidades_id);
@@ -56,7 +56,7 @@ class Locais{
 	
 	public function delete(){
 		try{
-			$stmt = $this->conn->prepare("DELETE FROM `cidades` WHERE `id` = :id");
+			$stmt = $this->conn->prepare("DELETE FROM `locais` WHERE `id` = :id");
 			$stmt->bindParam(":id", $this->id);
 			$stmt->execute();
 			return 1;
@@ -67,7 +67,7 @@ class Locais{
 	}
 
 	public function view(){
-		$stmt = $this->conn->prepare("SELECT * FROM `cidades` WHERE `id` = :id");
+		$stmt = $this->conn->prepare("SELECT * FROM `locais` WHERE `id` = :id");
 		$stmt->bindParam(":id", $this->id);
 		$stmt->execute();
 		$row = $stmt->fetch(PDO::FETCH_OBJ);
@@ -75,7 +75,7 @@ class Locais{
 	}
 
 	public function index(){
-		$stmt = $this->conn->prepare("SELECT * FROM `cidades` WHERE 1 ORDER BY `nome`");
+		$stmt = $this->conn->prepare("SELECT * FROM `locais` WHERE 1 ORDER BY `nome`");
 		$stmt->execute();
 		return $stmt;
 	}

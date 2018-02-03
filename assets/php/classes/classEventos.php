@@ -10,7 +10,8 @@ class Eventos{
 	private $horario;
 	private $organizador;
 	private $foto;
-	//estrangeira private $cidades;
+	private $cidades_id;
+	private $locais_id;
 
 	public function __construct() {
 		$database = new Database();
@@ -37,16 +38,24 @@ class Eventos{
 	function setFoto($value){
 		$this->foto = $value;
 	}
+	function setCidade($value){
+		$this->cidades_id = $value;
+	}
+	function setLocal($value){
+		$this->locais_id = $value;
+	}
 
 
 	public function insert(){
 		try{
-			$stmt = $this->conn->prepare("INSERT INTO `eventos`(`nome`,`data`,`horario`,`organizador`,`foto`) VALUES   (:nome, :data, :horario, :organizador, :foto)");
+			$stmt = $this->conn->prepare("INSERT INTO `eventos`(`nome`,`data`,`horario`,`organizador`,`foto`,`cidades_id`,`locais_id`) VALUES   (:nome, :data, :horario, :organizador, :foto,:cidades_id,:locais_id)");
 			$stmt->bindParam(":nome", $this->nome);
 			$stmt->bindParam(":data", $this->data);
 			$stmt->bindParam(":horario", $this->horario);
 			$stmt->bindParam(":organizador", $this->organizador);
 			$stmt->bindParam(":foto", $this->foto);
+			$stmt->bindParam(":cidades_id", $this->cidades_id);
+			$stmt->bindParam(":locais_id", $this->locais_id);
 			$stmt->execute();
 			return 1;
 		}catch(PDOException $e){
