@@ -48,7 +48,7 @@
                                                 <td>Sympla</td>
                                                 <td>Belo Horizonte</td>
                                                 <td>Music Hall</td>
-                                                <td><img id="imgevento" src="../assets/img/img1.png"></td>
+                                                <td><img id="imgevento" src="assets/img/img1.png"></td>
                                                 <td class="action">
                                                 	<a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
                                                 	<a href=""><i class="material-icons">mode_edit</i></a>
@@ -61,7 +61,7 @@
                                                 <td>Sympla</td>
                                                 <td>Belo Horizonte</td>
                                                 <td>Music Hall</td>
-                                                <td><img id="imgevento" src="../assets/img/img1.png"></td>
+                                                <td><img id="imgevento" src="assets/img/img1.png"></td>
                                                 <td class="action">
                                                 	<a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
                                                 	<a href=""><i class="material-icons">mode_edit</i></a>
@@ -74,7 +74,7 @@
                                                 <td>Sympla</td>
                                                 <td>Belo Horizonte</td>
                                                 <td>Music Hall</td>
-                                                <td><img id="imgevento" src="../assets/img/img1.png"></td>
+                                                <td><img id="imgevento" src="assets/img/img1.png"></td>
                                                 <td class="action">
                                                 	<a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
                                                 	<a href=""><i class="material-icons">mode_edit</i></a>
@@ -87,7 +87,7 @@
                                                 <td>Sympla</td>
                                                 <td>Belo Horizonte</td>
                                                 <td>Music Hall</td>
-                                                <td><img id="imgevento" src="../assets/img/img1.png"></td>
+                                                <td><img id="imgevento" src="assets/img/img1.png"></td>
                                                 <td class="action">                       
                                                 	<a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
                                                 	<a href=""><i class="material-icons">mode_edit</i></a>
