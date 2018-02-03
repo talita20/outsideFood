@@ -1,23 +1,24 @@
 <?php
-require_once 'assets/php/classes/classVendas.php';
+require_once 'assets/php/classes/classFuncionarios.php';
 require_once 'assets/php/classes/classServicos.php';
-$vendas = new Vendas();
+$funcionarios = new Funcionarios();
 $servicos= new Servicos();
 
 if(isset($_POST['insert'])){
-	$vendas->setQuantidade($_POST['quantidade']);	
-	$vendas->setServicos($_POST['servicos_id']);
+	$funcionarios->setNome($_POST['nome']);
+	$funcionarios->setTipo($_POST['tipo']);
+	$funcionarios->setServicos($_POST['servicos_id']);
 	
 
-	if($vendas->insert() == 1){
-		$result = "Venda inserida com sucesso!";
+	if($funcionarios->insert() == 1){
+		$result = "Funcionário inserido com sucesso!";
 	}else{
 		$error = "Erro ao inserir";
 	}
 }
 
 if(isset($_POST['cancel'])){
-	header("Location: cadastrarVendas.php");
+	header("Location: cadastrarFuncionarios.php");
 }
 
 ?>
@@ -33,7 +34,7 @@ if(isset($_POST['cancel'])){
 	<title>Outside Food</title>
 </head>
 <body>
-	<h1>CADASTRAR VENDAS</h1>
+	<h1>CADASTRAR FUNCIONARIOS</h1>
 	<?php
 	if (isset($result)) {
 		?>
@@ -50,15 +51,18 @@ if(isset($_POST['cancel'])){
 	}
 	?>
 	<div class="col-md-6">
-		<form action="cadastrarVendas.php" method="post">
+		<form action="cadastrarFuncionarios.php" method="post">
 			<div class="form-group">
-				<label>Quantidade:</label>
-				<input type="number" name="quantidade" class="form-control">
-				
+				<label>Nome do Funcionário</label>
+				<input type="text" name="nome" class="form-control">
+				<label>Tipo</label>
+				<input type="radio" name="tipo" value="0"> Funcionário
+				<input type="radio" name="tipo" value="1"> Chef
 				<label>Serviços</label>
-				
+
 				<input type="radio" name="servicos_id" value="0"> Food Truck
 				<input type="radio" name="servicos_id" value="1"> Barraca
+				
 				
 			</div>
 			<div class="form-group">

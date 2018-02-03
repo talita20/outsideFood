@@ -1,23 +1,22 @@
 <?php
-require_once 'assets/php/classes/classVendas.php';
-require_once 'assets/php/classes/classServicos.php';
-$vendas = new Vendas();
-$servicos= new Servicos();
+require_once 'assets/php/classes/classIngredientes.php';
+
+
+$ingredientes = new Ingredientes();
 
 if(isset($_POST['insert'])){
-	$vendas->setQuantidade($_POST['quantidade']);	
-	$vendas->setServicos($_POST['servicos_id']);
+	$ingredientes->setNome($_POST['nome']);
 	
 
-	if($vendas->insert() == 1){
-		$result = "Venda inserida com sucesso!";
+	if($ingredientes->insert() == 1){
+		$result = "Ingrediente inserido com sucesso!";
 	}else{
 		$error = "Erro ao inserir";
 	}
 }
 
 if(isset($_POST['cancel'])){
-	header("Location: cadastrarVendas.php");
+	header("Location: cadastrarIngredientes.php");
 }
 
 ?>
@@ -33,7 +32,7 @@ if(isset($_POST['cancel'])){
 	<title>Outside Food</title>
 </head>
 <body>
-	<h1>CADASTRAR VENDAS</h1>
+	<h1>CADASTRAR INGREDIENTES</h1>
 	<?php
 	if (isset($result)) {
 		?>
@@ -50,15 +49,11 @@ if(isset($_POST['cancel'])){
 	}
 	?>
 	<div class="col-md-6">
-		<form action="cadastrarVendas.php" method="post">
+		<form action="cadastrarIngredientes.php" method="post">
 			<div class="form-group">
-				<label>Quantidade:</label>
-				<input type="number" name="quantidade" class="form-control">
+				<label>Nome do Ingrediente</label>
+				<input type="text" name="nome" class="form-control">
 				
-				<label>Serviços</label>
-				
-				<input type="radio" name="servicos_id" value="0"> Food Truck
-				<input type="radio" name="servicos_id" value="1"> Barraca
 				
 			</div>
 			<div class="form-group">
