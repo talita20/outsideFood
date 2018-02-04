@@ -87,7 +87,7 @@ class Edicoes{
 	}
 
 	public function index(){
-		$stmt = $this->conn->prepare("SELECT * FROM `edicoes` WHERE 1 ORDER BY `nome`");
+		$stmt = $this->conn->prepare("SELECT * FROM `edicoes` WHERE 1");
 		$stmt->execute();
 		return $stmt;
 	}
