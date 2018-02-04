@@ -1,7 +1,9 @@
  <?php
-    require_once 'header.php';
-?>   
+ require_once 'header.php';
+ require_once 'assets/php/classes/classEdicoes.php';
+ require_once 'assets/php/classes/classEventos.php';
 
+<<<<<<< HEAD
            <div class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -33,18 +35,73 @@
                                                 </div>
                                             </div>
                                            
-                                        </div>
-                                       
-                                        <button type="submit" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Edição</button>
-                                        <div class="clearfix"></div>
-                                    </form>
-                                    </div>
-                                </div>                                
-                            </div>
-                        </div>
+=======
+ $edicoes = new Edicoes();
+ $eventos = new Eventos();
+ ?>   
+
+ <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="orange">
+                        <h4 class="title">Cadastrar</h4>
+                        <p class="category">Cadastre o espaço do evento</p>
                     </div>
+                    <div class="card-content">
+                        <form action="edicao.php" method="post">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Evento</label>
+                                        <select id="select" name="eventos_id" id="eventos_id" for="eventos" action="edicao.php" class="form-control">
+                                            <option>Selecione</option>
+                                            <?php 
+                                            $stmtEvento = $eventos->index();
+                                            while($rowEvento = $stmtEvento->fetch(PDO::FETCH_OBJ)){
+                                                ?>
+                                                <option id="<?php echo $rowEvento->id; ?>" value="<?php echo $rowEvento->id; ?>"><?php echo $rowEvento->nome ?></option>
+                                                <?php } ?>
+                                            </select>
+>>>>>>> d153ede1bce6e7bb1927061639052c0c6a7d9d92
+                                        </div>
+                                    </div>
+
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Edição</label>
+                                        <input type="number" name="numero" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Capacidade</label>
+                                        <input type="number" name="capacidade" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Lotação</label>
+                                        <input id="formulario" name="lotacao" type="number" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                </div>
+                                <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Edição</button>
+
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>                                
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
 <?php
 require_once 'footer.php';
@@ -53,19 +110,19 @@ require_once 'footer.php';
 
 <script>
     $(document).on('click', '#close-preview', function(){ 
-    $('.image-preview').popover('hide');
+        $('.image-preview').popover('hide');
     // Hover befor close the preview
     $('.image-preview').hover(
         function () {
            $('.image-preview').popover('show');
-        }, 
-         function () {
+       }, 
+       function () {
            $('.image-preview').popover('hide');
-        }
-    );    
+       }
+       );    
 });
 
-$(function() {
+    $(function() {
     // Create the close button
     var closebtn = $('<button/>', {
         type:"button",
