@@ -11,7 +11,7 @@
             <div class="content">
  				<div class="container-fluid">
                     <div class="collapse navbar-collapse">
-                    <a href="./adicionarevento.php">
+                    <a href="./adicionarcidades.php">
                      	<button type="button" class="btn btn-warning">Adicionar</button>
                  	</a>
                        <form class="navbar-form navbar-right" role="search">
@@ -38,8 +38,7 @@
                                     <table class="table">
                                         <thead class="text-primary">
                                             <th>Nome</th>
-                                                                                      				
-                                            
+                                             <th class="actions">Ações</th>
                                         </thead>
                                         <tbody>
                                             
@@ -51,8 +50,10 @@
                                                 <tr>
 
                                                     <td class="nome"><?php echo $row->nome; ?></td>
-                                                    
-                                                   
+                                                        <td class="actions">
+                                                        <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
+                                                        <a href=""><i class="material-icons">mode_edit</i></a>
+                                                      </td>                                                  
                                                 </tr>
 
 
@@ -96,3 +97,8 @@
 <?php
 require_once 'footer.php';
 ?>
+
+<script type="application/javascript">
+    var active = document.getElementById("cidade");
+    active.classList.add("active");
+</script>

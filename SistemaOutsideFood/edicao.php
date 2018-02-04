@@ -37,11 +37,11 @@
                                 <div class="card-content table-responsive">
                                     <table class="table">
                                         <thead class="text-primary">
+                                            <th>Evento</th>
                                             <th>Numero</th>
                                             <th>Capacidade</th>
-                                            
-                                            <th>Lotação</th>
-                                            
+                                            <th>Lotação</th> 
+                                            <th class="actions">Ações</th>
                                         </thead>
                                         <tbody>
                                             
@@ -51,12 +51,14 @@
                                                     while($row = $todasEdicoes->fetch(PDO::FETCH_OBJ)){
                                                 ?>
                                                 <tr>
-
+                                                    <td class="evento"></td>
                                                     <td class="numero"><?php echo $row->numero; ?></td>
-                                                    <td class="capacidade"><?php echo $row->capacidade; ?></td>
-                                                   
+                                                    <td class="capacidade"><?php echo $row->capacidade; ?></td>                                                  
                                                     <td class="lotacao"><?php echo $row->lotacao; ?></td>
-                                                    
+                                                    <td class="actions">
+                                                        <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
+                                                        <a href=""><i class="material-icons">mode_edit</i></a>
+                                                      </td> 
                                                 </tr>
 
 

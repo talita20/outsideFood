@@ -41,8 +41,7 @@
                                             <th>Aluguel</th>
                                             <th>Metragem</th>
                                             <th>Benfeitoria</th>
-                                                                                      				
-                                            
+                                            <th class="actions">Ações</th>  
                                         </thead>
                                         <tbody>
                                             
@@ -57,8 +56,10 @@
                                                      <td class="aluguel"><?php echo $row->aluguel; ?></td>
                                                       <td class="metragem"><?php echo $row->metragem; ?></td>
                                                        <td class="benfeitoria"><?php echo $row->benfeitoria; ?></td>
-                                                    
-                                                   
+                                                       <td class="actions">
+                                                        <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
+                                                        <a href=""><i class="material-icons">mode_edit</i></a>
+                                                      </td>                                                  
                                                 </tr>
 
 
@@ -102,3 +103,8 @@
 <?php
 require_once 'footer.php';
 ?>
+
+<script type="application/javascript">
+    var active = document.getElementById("espaco");
+    active.classList.add("active");
+</script>

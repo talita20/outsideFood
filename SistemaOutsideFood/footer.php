@@ -32,9 +32,4 @@
     });
 </script>
 
-<script type="application/javascript">
-    var active = document.getElementById("eventos");
-    active.classList.add("active");
-</script>
-
 </html>

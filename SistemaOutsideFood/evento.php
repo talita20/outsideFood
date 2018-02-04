@@ -187,3 +187,10 @@ while($row = $todosEventos->fetch(PDO::FETCH_OBJ)){
 <?php
 require_once 'footer.php';
 ?>
+
+
+
+<script type="application/javascript">
+    var active = document.getElementById("eventos");
+    active.classList.add("active");
+</script>

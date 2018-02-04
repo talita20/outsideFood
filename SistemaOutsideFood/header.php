@@ -48,25 +48,25 @@
                         </a>
                     </li>
                     <li id="edicao">
-                        <a href="./table.html">
+                        <a href="./edicao.php">
                             <i class="material-icons">content_paste</i>
                             <p>Edição</p>
                         </a>
                     </li>
                     <li id="cidade">
-                        <a href="./typography.html">
+                        <a href="./cidade.php">
                             <i class="material-icons">location_city</i>
                             <p>Cidade</p>
                         </a>
                     </li>
                     <li id="local">
-                        <a href="./icons.html">
+                        <a href="./local.php">
                             <i class="material-icons">location_on</i>
                             <p>Local</p>
                         </a>
                     </li>
                     <li id="espaco">
-                        <a href="./notifications.html">
+                        <a href="./espaco.php">
                             <i class="material-icons">store</i>
                             <p>Espaços</p>
                         </a>

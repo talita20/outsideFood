@@ -38,7 +38,8 @@
                                     <table class="table">
                                         <thead class="text-primary">
                                             <th>Nome</th>
-                                                                                      				
+                                             <th class="actions">Ações</th>
+                                         				
                                             
                                         </thead>
                                         <tbody>
@@ -49,10 +50,11 @@
                                                     while($row = $todosLocais->fetch(PDO::FETCH_OBJ)){
                                                 ?>
                                                 <tr>
-
-                                                    <td class="nome"><?php echo $row->nome; ?></td>
-                                                    
-                                                   
+                                                <td class="nome"><?php echo $row->nome; ?></td>
+                                                <td class="actions">
+                                                  <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
+                                                  <a href=""><i class="material-icons">mode_edit</i></a>
+                                                </td>
                                                 </tr>
 
 
@@ -96,3 +98,8 @@
 <?php
 require_once 'footer.php';
 ?>
+
+<script type="application/javascript">
+    var active = document.getElementById("local");
+    active.classList.add("active");
+</script>
