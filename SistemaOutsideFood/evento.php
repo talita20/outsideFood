@@ -1,78 +1,88 @@
 <?php
-	require_once 'header.php';
-    require_once 'assets/php/classes/classEventos.php';
+require_once 'header.php';
+require_once 'assets/php/classes/classEventos.php';
+require_once 'assets/php/classes/classCidades.php';
+require_once 'assets/php/classes/classLocais.php';
 
-
-
-    $eventos = New Eventos();
+$eventos = New Eventos();
+$cidades = New Cidades();
+$locais = New Locais();
 
 ?>
 
-            <div class="content">
- 				<div class="container-fluid">
-                    <div class="collapse navbar-collapse">
-                    <a href="./adicionarevento.php">
-                     	<button type="button" class="btn btn-warning">Adicionar</button>
-                 	</a>
-                       <form class="navbar-form navbar-right" role="search">
-                            <div class="form-group  is-empty">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="material-input"></span>
-                            </div>
-                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
-                                <i class="material-icons">search</i>
-                                <div class="ripple-container"></div>
-                            </button>
-                        </form> 
-                    </div>
+<div class="content">
+   <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+        <a href="./adicionarevento.php">
+          <button type="button" class="btn btn-warning">Adicionar</button>
+      </a>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group  is-empty">
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="material-input"></span>
+        </div>
+        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+        </button>
+    </form> 
+</div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="orange">
+                    <h4 class="title">Eventos</h4>
                 </div>
+                <div class="card-content table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>Organizador</th>
+                            <th>Cidade</th>
+                            <th>Local</th>
+                            <th>Folder</th>                                            				
+                            <th class="actions">Ações</th>
+                        </thead>
+                        <tbody>
 
-             <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Eventos</h4>
-                                </div>
-                                <div class="card-content table-responsive">
-                                    <table class="table">
-                                        <thead class="text-primary">
-                                            <th>Nome</th>
-                                            <th>Data</th>
-                                            <th>Horário</th>
-                                            <th>Organizador</th>
-                                            <th>Cidade</th>
-                                            <th>Local</th>
-                                            <th>Folder</th>                                            				
-                                            <th class="actions">Ações</th>
-                                        </thead>
-                                        <tbody>
-                                            
-                                                <?php
+                            <?php
 
-                                                    $todosEventos = $eventos->index();
-                                                    while($row = $todosEventos->fetch(PDO::FETCH_OBJ)){
-                                                ?>
-                                                <tr>
+                            $todosEventos = $eventos->index();
+                            while($row = $todosEventos->fetch(PDO::FETCH_OBJ)){
+                                ?>
+                                <tr>
+                                    <td class="nome"><?php echo $row->nome; ?></td>
+                                    <td class="data"><?php echo $row->data; ?></td>
+                                    <td class="horario"><?php echo $row->horario; ?></td>
+                                    <td class="organizador"><?php echo $row->organizador; ?></td>
+                                    <td class="cidade"><?php echo $row->cidade; ?></td>
+                                    <td class="local"><?php echo $row->local; ?></td>
+                                    <td class="folder"><?php echo $row->folder; ?></td>
+                                    <td class="btn">
 
-                                                    <td class="nome"><?php echo $row->nome; ?></t>
-                                                </tr>
+                                    </td>
+                                </tr>
 
 
-                                                <?php
+                                <?php
 
-                                                    }
+                            }
 
-                                                ?>
-                                                                    
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            ?>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+</div>
 
 
 <!-- Modal -->
@@ -82,18 +92,18 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Excluir</h5>
 <!--         <span aria-hidden="true">X</span>
- -->        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        </button>
-      </div>
-      <div class="modal-body">
-        Dessa excluir esse evento?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button id="btnamarelo" type="button" class="btn btn-primary">Sim</button>
-      </div>
-    </div>
-  </div>
+-->        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+</button>
+</div>
+<div class="modal-body">
+    Dessa excluir esse evento?
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+    <button id="btnamarelo" type="button" class="btn btn-primary">Sim</button>
+</div>
+</div>
+</div>
 </div>
 
 <?php

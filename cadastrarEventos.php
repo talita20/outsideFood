@@ -70,24 +70,19 @@ if(isset($_POST['cancel'])){
 				<label>Foto</label>
 				<input type="file" name="foto" required>
 				<label>Cidade</label>
-				<select id="select" name="id" id="cidade" action="cadastrarEventos.php">
+				<select id="select" name="id" id="cidade" for="cidade" action="cadastrarEventos.php">
 					<option>Selecione</option>
 					<?php 
 					$stmt = $cidade->index();
 					while($row = $stmt->fetch(PDO::FETCH_OBJ)){
 						?>
-						<option id="<?php echo $row->id; ?>" value="<?php echo $row->id; ?>"><?php echo $row->nome ?></option>
+						<option id="<?php echo $row->id; ?>" value="<?php echo $row->id; ?>" onclick="alert( this.id )"><?php echo $row->nome ?></option>
 						<?php } ?>
 					</select>
-					<label>Locais</label>
-					<?php 
-					$stmtLocal = $local->index();
-					while($row = $stmt->fetch(PDO::FETCH_OBJ)){
-						while($rowLocal = $stmtLocal->fetch(PDO::FETCH_OBJ)){
-							if($row->id == $rowLocal->id){
-					?>
-					<input type="radio" name="local" value="<?php echo $rowLocal->nome ?>" disabled><?php echo $rowLocal->nome ?>
-					<?php }}}?>
+					<label for="localPlot">Locais</label>
+					<div class="localHide">
+						<input type="radio" id="localPlot" name="localPlot" disabled>skgdmhlfg,
+					</div>
 				</div>
 				<div class="form-group">
 					<button type="submit" name="cancel" class="btn btn-danger">Cancelar</button>
@@ -99,27 +94,6 @@ if(isset($_POST['cancel'])){
 	</html>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		function chainSelect(current, target){
-			var value1 = $(current).on('change', function(){
-				if($(this).find(':selected').val() != ''){
-					$(target).removeAttr('disabled');
-					var value = $(this).find(':selected').text();
-				}else{
-					$(target).prop('disabled', 'disabled').val(null);
-				}
-				return value;
-			});
-			return value1;
-		}
-		cidade = chainSelect('select#cidade', '#local');
-		local = chainSelect('select#local', '#submit');
-
-		$('#addToCart').submit(function(){
-			event.preventDefault();
-			alert('cidade: ' + cidade + '\nlocal: ' + local + '');
-		});
-	</script>
-
+	
 
 
