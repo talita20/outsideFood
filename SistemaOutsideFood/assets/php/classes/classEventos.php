@@ -107,6 +107,13 @@ class Eventos{
 		return $stmt;
 	}
 
-	
+	public function pesquisa($nome){
+        $query = "SELECT * FROM `eventos` WHERE `nome` LIKE '%" . $nome . "%' ORDER BY `nome`";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
 }
 ?>
