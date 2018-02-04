@@ -12,18 +12,18 @@
                                     <p class="category">Cadastre a cidade do evento</p>
                                 </div>
                                 <div class="card-content">
-                                    <form>
+                                    <form action="cidade.php" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Nome</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" name="nome" class="form-control">
                                                 </div>
                                             </div>
                                             
                                         </div>
                                        
-                                        <button type="submit" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Cidade</button>
+                                        <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Cidade</button>
                                         <div class="clearfix"></div>
                                     </form>
                                     </div>

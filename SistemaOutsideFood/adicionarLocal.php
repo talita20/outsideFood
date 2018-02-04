@@ -1,38 +1,57 @@
  <?php
-    require_once 'header.php';
-?>   
+ require_once 'header.php';
+ require_once 'assets/php/classes/classLocais.php';
+require_once 'assets/php/classes/classCidades.php';
 
-           <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Cadastrar</h4>
-                                    <p class="category">Cadastre o local do evento</p>
-                                </div>
-                                <div class="card-content">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Nome</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                       
-                                        <button type="submit" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Local</button>
-                                        <div class="clearfix"></div>
-                                    </form>
-                                    </div>
-                                </div>                                
-                            </div>
-                        </div>
+$locais = New Locais();
+$cidades = New Cidades();
+ ?>   
+
+ <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="orange">
+                        <h4 class="title">Cadastrar</h4>
+                        <p class="category">Cadastre o local do evento</p>
                     </div>
+                    <div class="card-content">
+                        <form action="local.php" method="post">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Nome</label>
+                                        <input type="text" name="nome" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Cidade</label>
+                                        <select id="select" name="cidades_id" id="cidades_id" for="cidade" action="evento.php" class="form-control">
+                                            <option>Selecione</option>
+                                            <?php 
+                                            $stmtCidade = $cidades->index();
+                                            while($rowCidade = $stmtCidade->fetch(PDO::FETCH_OBJ)){
+                                                ?>
+                                                <option id="<?php echo $rowCidade->id; ?>" value="<?php echo $rowCidade->id; ?>"><?php echo $rowCidade->nome ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Local</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>                                
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
 <?php
 require_once 'footer.php';
@@ -41,19 +60,19 @@ require_once 'footer.php';
 
 <script>
     $(document).on('click', '#close-preview', function(){ 
-    $('.image-preview').popover('hide');
+        $('.image-preview').popover('hide');
     // Hover befor close the preview
     $('.image-preview').hover(
         function () {
-           $('.image-preview').popover('show');
-        }, 
-         function () {
-           $('.image-preview').popover('hide');
-        }
-    );    
+         $('.image-preview').popover('show');
+     }, 
+     function () {
+         $('.image-preview').popover('hide');
+     }
+     );    
 });
 
-$(function() {
+    $(function() {
     // Create the close button
     var closebtn = $('<button/>', {
         type:"button",
