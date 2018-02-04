@@ -1,41 +1,7 @@
- <?php
+<?php
  require_once 'header.php';
  require_once 'assets/php/classes/classEdicoes.php';
  require_once 'assets/php/classes/classEventos.php';
-
-<<<<<<< HEAD
-           <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Cadastrar</h4>
-                                    <p class="category">Cadastre o espaço do evento</p>
-                                </div>
-                                <div class="card-content">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Numero</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Capacidade</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Lotação</label>
-                                                    <input id="formulario" type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                           
-=======
  $edicoes = new Edicoes();
  $eventos = new Eventos();
  ?>   
@@ -64,7 +30,6 @@
                                                 <option id="<?php echo $rowEvento->id; ?>" value="<?php echo $rowEvento->id; ?>"><?php echo $rowEvento->nome ?></option>
                                                 <?php } ?>
                                             </select>
->>>>>>> d153ede1bce6e7bb1927061639052c0c6a7d9d92
                                         </div>
                                     </div>
 
@@ -121,7 +86,6 @@ require_once 'footer.php';
        }
        );    
 });
-
     $(function() {
     // Create the close button
     var closebtn = $('<button/>', {

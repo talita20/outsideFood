@@ -4,7 +4,28 @@
 
 
 
-    $cidades = New Cidades();
+    $cidades = new Cidades();
+
+    if(isset($_POST['insert'])){
+    $cidades->setNome($_POST['nome']);
+   
+    if($cidades->insert() == 1){
+        $result = "Cidade inserida com sucesso!";
+    }else{
+        $error = "Erro ao inserir. Tente novamente";
+    }
+}
+
+
+if(isset($_POST['delete'])){
+    $cidades->setId($_POST['id']);
+
+    if($cidades->delete() == 1){
+        $result = "apagou";
+    }else{
+        $error = "erro";
+    }
+}
 
 ?>
 
@@ -51,7 +72,7 @@
 
                                                     <td class="nome"><?php echo $row->nome; ?></td>
                                                         <td class="actions">
-                                                        <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
+                                                        <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $row->id ?>" ><i class="material-icons">delete</i></a>
                                                         <a href=""><i class="material-icons">mode_edit</i></a>
                                                       </td>                                                  
                                                 </tr>
@@ -74,7 +95,12 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php
+$todasCidades= $cidades->index();
+while($row = $todasCidades->fetch(PDO::FETCH_OBJ)){
+?>
+<div class="modal fade" id="exampleModal<?php echo $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form action="cidade.php" method="post">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -88,12 +114,14 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <button id="btnamarelo" type="button" class="btn btn-primary">Sim</button>
+        <input type="hidden" name="id" value="<?php echo $row->id ?>">
+        <button id="btnamarelo" type="submit" name="delete" class="btn btn-primary">Sim</button>
       </div>
     </div>
   </div>
+  </form>
 </div>
-
+<?php } ?>
 <?php
 require_once 'footer.php';
 ?>
