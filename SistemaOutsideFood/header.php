@@ -77,10 +77,20 @@
                             <p>Álbum de Fotos</p>
                         </a>
                     </li>
+                    <li class="active-pro" style="padding-bottom: 50px;">
+                        
+                        <a href="">
+                            <i class="material-icons">exit_to_app</i>
+                            <p>Sair</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
+
+
         </div>
         <div class="main-panel">
+
 <!--             <nav class="navbar navbar-transparent navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-header">
