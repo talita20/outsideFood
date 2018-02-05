@@ -21,6 +21,18 @@ if(isset($_POST['insert'])){
     }
 }
 
+if(isset($_POST['edit'])){
+  $locais->setId($_POST['id']);
+  $locais->setNome($_POST['nome']);
+  $locais->setCidades($_POST['cidades_id']);
+
+  if($locais->edit() == 1){
+        $result = "Local editado com sucesso!";
+    }else{
+        $error = "Erro ao editar. Tente novamente";
+    }
+}
+
 
 if(isset($_POST['delete'])){
     $locais->setId($_POST['id']);
@@ -86,7 +98,7 @@ if(isset($_POST['delete'])){
                                      <?php } } ?>
                                      <td class="actions">
                                       <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $row->id ?>" ><i class="material-icons">delete</i></a>
-                                      <a href="./editarlocal.php"><i class="material-icons">mode_edit</i></a>
+                                      <a href="./editarlocal.php?id=<?php echo $row->id ?>"><i class="material-icons">mode_edit</i></a>
                                   </td>
                               </tr>
 
