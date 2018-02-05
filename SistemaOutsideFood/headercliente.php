@@ -43,42 +43,32 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li id="eventos">
-                        <a href="./evento.php">
+                    <li id="servico">
+                        <a href="./servico.php">
                             <i class="material-icons">event</i>                            
                             <p>Serviço</p>
                         </a>
                     </li>
-                    <li id="edicao">
-                        <a href="./edicao.php">
+                    <li id="funcjonarios">
+                        <a href="./funcionarios.php">
                             <i class="material-icons">content_paste</i>
                             <p>Funcionário</p>
                         </a>
                     </li>
-                    <li id="cidade">
-                        <a href="./cidade.php">
+                    <li id="vendas">
+                        <a href="./vendas.php">
                             <i class="material-icons">location_city</i>
                             <p>Vendas</p>
                         </a>
                     </li>
-                    <li id="local">
-                        <a href="./local.php">
+                    <li id="pratos">
+                        <a href="./pratos.php">
                             <i class="material-icons">location_on</i>
                             <p>Pratos</p>
                         </a>
                     </li>
-                    <li id="espaco">
-                        <a href="./espaco.php">
-                            <i class="material-icons">store</i>
-                            <p>Espaços</p>
-                        </a>
-                    </li>
-                    <li id="album">
-                        <a href="./maps.html">
-                            <i class="material-icons">photo_library</i>
-                            <p>Álbum de Fotos</p>
-                        </a>
-                    </li>
+
+
                     <li class="active-pro" style="padding-bottom: 50px;">
                         
                         <a href="">

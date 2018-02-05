@@ -8,8 +8,8 @@ require_once 'headercliente.php';
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="orange">
-                        <h4 class="title">Cadastrar</h4>
-                        <p class="category">Cadastre seu prato</p>
+                        <h4 class="title">Atualizar</h4>
+                        <p class="category">Atualize o prato</p>
                     </div>
                     <div class="card-content">
                         <form action="evento.php" method="post" enctype="multipart/form-data">
@@ -48,7 +48,7 @@ require_once 'headercliente.php';
                                         </div><!-- /input-group image-preview [TO HERE]--> 
                                     </div>
                                 </div>
-                                <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Prato</button>
+                                <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Atualizar Prato</button>
                                 <div class="clearfix"></div>
                             </form>
                         </div>
