@@ -1,5 +1,9 @@
  <?php
     require_once 'headeradmin.php';
+ require_once 'assets/php/classes/classLocais.php';
+require_once 'assets/php/classes/classCidades.php';
+$locais = New Locais();
+$cidades = New Cidades();
 ?>   
 
            <div class="content">
@@ -12,18 +16,34 @@
                                     <p class="category">Cadastre o local do evento</p>
                                 </div>
                                 <div class="card-content">
-                                    <form>
+                                    <form action="local.php" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Nome</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" name="nome" class="form-control">
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-5">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Cidade</label>
+                                        <select id="select" name="cidades_id" id="cidades_id" for="cidade" action="evento.php" class="form-control">
+                                            <option>Selecione</option>
+                                            <?php 
+                                            $stmtCidade = $cidades->index();
+                                            while($rowCidade = $stmtCidade->fetch(PDO::FETCH_OBJ)){
+                                                ?>
+                                                <option id="<?php echo $rowCidade->id; ?>" value="<?php echo $rowCidade->id; ?>"><?php echo $rowCidade->nome ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                             
                                         </div>
                                        
-                                        <button type="submit" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Local</button>
+                                        <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Local</button>
                                         <div class="clearfix"></div>
                                     </form>
                                     </div>
