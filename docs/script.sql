@@ -210,7 +210,7 @@ CREATE TABLE `edicoes_has_espacos` (
 CREATE TABLE `espacos` (
   `id` int(10) UNSIGNED NOT NULL,
   `nome` varchar(45) NOT NULL,
-  `aluguel` double NOT NULL,
+  `aluguel` varchar(15) NOT NULL,
   `metragem` double NOT NULL,
   `benfeitoria` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
