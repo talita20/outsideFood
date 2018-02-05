@@ -86,7 +86,7 @@ if(isset($_POST['delete'])){
                                      <?php } } ?>
                                      <td class="actions">
                                       <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $row->id ?>" ><i class="material-icons">delete</i></a>
-                                      <a href=""><i class="material-icons">mode_edit</i></a>
+                                      <a href="./editarlocal.php"><i class="material-icons">mode_edit</i></a>
                                   </td>
                               </tr>
 
