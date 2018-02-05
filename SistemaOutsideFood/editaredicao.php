@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header" data-background-color="orange">
                         <h4 class="title">Atualizar</h4>
-                        <p class="category">Atualize o evento</p>
+                        <p class="category">Atualize a edição</p>
                     </div>
                     <div class="card-content">
                         <form action="edicao.php" method="post">
@@ -17,15 +17,9 @@
                                 <div class="col-md-5">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Evento</label>
-                                        <select id="select" name="eventos_id" id="eventos_id" for="eventos" action="edicao.php" class="form-control">
-                                            <option>Selecione</option>
-                                            <?php 
-                                            $stmtEvento = $eventos->index();
-                                            while($rowEvento = $stmtEvento->fetch(PDO::FETCH_OBJ)){
-                                                ?>
-                                                <option id="<?php echo $rowEvento->id; ?>" value="<?php echo $rowEvento->id; ?>"><?php echo $rowEvento->nome ?></option>
-                                                <?php } ?>
-                                            </select>
+                                        
+                                        <input type="text" name="numero" class="form-control">
+                                    </div>
                                         </div>
                                     </div>
 
