@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Dez-2017 às 22:33
+-- Generation Time: 05-Fev-2018 às 18:38
 -- Versão do servidor: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `outsidefood`
 --
-
+CREATE DATABASE IF NOT EXISTS outsidefood;
+USE outsidefood;
 -- --------------------------------------------------------
 
 --
@@ -91,6 +92,10 @@ CREATE TABLE `culinaria` (
   `tempo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `culinaria`
+--
+
 INSERT INTO `culinaria` (`id`, `tipo_culinaria`, `tempo`) VALUES
 (1, 'Brasileira', 10),
 (2, 'Italiana', 8),
@@ -147,6 +152,9 @@ CREATE TABLE `edicoes` (
   `eventos_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `edicoes`
+--
 
 INSERT INTO `edicoes` (`id`, `numero`, `capacidade`, `lotacao`, `eventos_id`) VALUES
 (1, 3, 269, 435, 1),
@@ -215,57 +223,60 @@ CREATE TABLE `espacos` (
   `benfeitoria` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `espacos`
+--
+
 INSERT INTO `espacos` (`id`, `nome`, `aluguel`, `metragem`, `benfeitoria`) VALUES
-(1, 'Palco', 515.67, 400, 'Asfaltamento'),
-(2, 'Quiosque', 433.92, 300, 'Substituição dos sistemas elétricos'),
-(3, 'Rua 1', 602.91, 218.98, 'Limpeza da rua'),
-(4, 'Rua 2', 518.14, 518.07, 'Asfaltamento'),
-(5, 'Rua 3', 194.04, 228.26, 'Instalação de grades protetoras'),
-(6, 'Rua 4', 281.85, 431.92, 'Obra de Jardinagem'),
-(7, 'Quiosque', 433.92, 300, 'Reconstrução de muro'),
-(8, 'Palco', 515.67, 400, 'Pintura'),
-(9, 'Rua 5', 331.66, 780.09, 'Estátua'),
-(10, 'Rua 3', 157.69, 106.49, 'Chafariz'),
-(11, 'Gramado', 460, 250, 'Corte do gramado'),
-(12, 'Gramado', 460, 250, 'Construção de grade'),
-(13, 'Gramado', 460, 250, 'Obra de Jardinagem'),
-(14, 'Gramado', 460, 250, 'Limpeza do gramado'),
-(15, 'Gramado', 460, 250, 'Instalação de poste de luz'),
-(16, 'Palco', 515.67, 400, 'Limpeza'),
-(17, 'Palco', 515.67, 400, 'Pintura'),
-(18, 'Quiosque', 433.92, 300, 'Instalação de grades protetoras'),
-(19, 'Quiosque', 433.92, 300, 'Demão de Verniz'),
-(20, 'Quiosque', 433.92, 300, 'Manutenção do telhado'),
-(21, 'Quiosque', 433.92, 300, 'Substituição do piso'),
-(22, 'Quiosque', 433.92, 300, 'Limpeza'),
-(23, 'Quiosque', 433.92, 300, 'Instalação de grade'),
-(24, 'Rua 1', 460, 602.91, 'Manutenção da rua'),
-(25, 'Rua 1', 602.91, 250, 'Instalação de lixeira'),
-(26, 'Rua 1', 460, 250, 'Pintura'),
-(27, 'Rua 2', 602.91, 106.49, 'Manutenção da rua'),
-(28, 'Rua 2', 602.91, 106.49, 'Instalação de lixeira'),
-(29, 'Rua 2', 602.91, 106.49, 'Pintura'),
-(30, 'Rua 3', 602.91, 106.49, 'Manutenção da rua'),
-(31, 'Rua 3', 602.91, 106.49, 'Instalação de lixeira'),
-(32, 'Rua 3', 602.91, 106.49, 'Pintura'),
-(33, 'Rua 4', 602.91, 106.49, 'Manutenção da rua'),
-(34, 'Rua 4', 602.91, 106.49, 'Instalação de lixeira'),
-(35, 'Rua 4', 602.91, 106.49, 'Pintura'),
-(36, 'Rua 5', 602.91, 106.49, 'Manutenção da rua'),
-(37, 'Rua 5', 602.91, 106.49, 'Instalação de lixeira'),
-(38, 'Rua 5', 602.91, 106.49, 'Pintura'),
-(39, 'Cimentado', 307.99, 150.2, 'Encerar piso'),
-(40, 'Cimentado', 307.99, 150.2, 'Limpeza'),
-(41, 'Cimentado', 307.99, 150.2, 'Pintura'),
-(42, 'Cimentado', 307.99, 150.2, 'Coleta de Lixo'),
-(43, 'Cimentado', 307.99, 150.2, 'Instalação de lixeiras'),
-(44, 'Cimentado', 307.99, 150.2, 'Instalação de Rampas'),
-(45, 'Cimentado', 307.99, 150.2, 'Instalação de Postes de luz'),
-(46, 'Cimentado', 307.99, 150.2, 'Manutenção da rede elétrica'),
-(47, 'Cimentado', 307.99, 150.2, 'Manutenção Hidraulica'),
-(48, 'Cimentado', 307.99, 150.2, 'Instalação de Pias'),
-(49, 'Quiosque', 433.92, 300, 'Instalação de Pias'),
-(50, 'Quiosque', 433.92, 300, 'Manutenção Hidraulica');
+(1, 'Palco', '515.67', 400, 'Asfaltamento'),
+(2, 'Quiosque', '433.92', 300, 'Substituição dos sistemas elétricos'),
+(3, 'Rua 1', '602.91', 218.98, 'Limpeza da rua'),
+(4, 'Rua 2', '518.14', 518.07, 'Asfaltamento'),
+(5, 'Rua 3', '194.04', 228.26, 'Instalação de grades protetoras'),
+(6, 'Rua 4', '281.85', 431.92, 'Obra de Jardinagem'),
+(7, 'Quiosque', '433.92', 300, 'Reconstrução de muro'),
+(8, 'Palco', '515.67', 400, 'Pintura'),
+(9, 'Rua 5', '331.66', 780.09, 'Estátua'),
+(10, 'Rua 3', '157.69', 106.49, 'Chafariz'),
+(11, 'Gramado', '460', 250, 'Corte do gramado'),
+(12, 'Gramado', '460', 250, 'Construção de grade'),
+(13, 'Gramado', '460', 250, 'Obra de Jardinagem'),
+(14, 'Gramado', '460', 250, 'Limpeza do gramado'),
+(15, 'Gramado', '460', 250, 'Instalação de poste de luz'),
+(16, 'Palco', '515.67', 400, 'Limpeza'),
+(17, 'Palco', '515.67', 400, 'Pintura'),
+(18, 'Quiosque', '433.92', 300, 'Instalação de grades protetoras'),
+(19, 'Quiosque', '433.92', 300, 'Demão de Verniz'),
+(20, 'Quiosque', '433.92', 300, 'Manutenção do telhado'),
+(21, 'Quiosque', '433.92', 300, 'Substituição do piso'),
+(22, 'Quiosque', '433.92', 300, 'Limpeza'),
+(23, 'Quiosque', '433.92', 300, 'Instalação de grade'),
+(24, 'Rua 1', '460', 602.91, 'Manutenção da rua'),
+(25, 'Rua 1', '602.91', 250, 'Instalação de lixeira'),
+(26, 'Rua 1', '460', 250, 'Pintura'),
+(27, 'Rua 2', '602.91', 106.49, 'Manutenção da rua'),
+(28, 'Rua 2', '602.91', 106.49, 'Instalação de lixeira'),
+(29, 'Rua 2', '602.91', 106.49, 'Pintura'),
+(30, 'Rua 3', '602.91', 106.49, 'Manutenção da rua'),
+(31, 'Rua 3', '602.91', 106.49, 'Instalação de lixeira'),
+(32, 'Rua 3', '602.91', 106.49, 'Pintura'),
+(33, 'Rua 4', '602.91', 106.49, 'Manutenção da rua'),
+(34, 'Rua 4', '602.91', 106.49, 'Instalação de lixeira'),
+(35, 'Rua 4', '602.91', 106.49, 'Pintura'),
+(36, 'Rua 5', '602.91', 106.49, 'Manutenção da rua'),
+(37, 'Rua 5', '602.91', 106.49, 'Instalação de lixeira'),
+(38, 'Rua 5', '602.91', 106.49, 'Pintura'),
+(39, 'Cimentado', '307.99', 150.2, 'Encerar piso'),
+(40, 'Cimentado', '307.99', 150.2, 'Limpeza'),
+(42, 'Cimentado', '307.99', 150.2, 'Coleta de Lixo'),
+(43, 'Cimentado', '307.99', 150.2, 'Instalação de lixeiras'),
+(44, 'Cimentado', '307.99', 150.2, 'Instalação de Rampas'),
+(45, 'Cimentado', '307.99', 150.2, 'Instalação de Postes de luz'),
+(46, 'Cimentado', '307.99', 150.2, 'Manutenção da rede elétrica'),
+(47, 'Cimentado', '307.99', 150.2, 'Manutenção Hidraulica'),
+(48, 'Cimentado', '307.99', 150.2, 'Instalação de Pias'),
+(49, 'Quiosque', '433.92', 300, 'Instalação de Pias'),
+(50, 'Quiosque', '433.92', 300, 'Manutenção Hidraulica');
 
 -- --------------------------------------------------------
 
@@ -280,8 +291,13 @@ CREATE TABLE `eventos` (
   `horario` time NOT NULL,
   `organizador` varchar(45) NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `cidades_id` int(10) UNSIGNED NOT NULL
+  `cidades_id` int(10) UNSIGNED NOT NULL,
+  `locais_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `eventos`
+--
 
 INSERT INTO `eventos` (`id`, `nome`, `data`, `horario`, `organizador`, `foto`, `cidades_id`, `locais_id`) VALUES
 (1, 'Petrópolis Gourmet', '2018-10-10', '13:00:00', 'João Silva', 'foto', 1, 1),
@@ -337,6 +353,10 @@ CREATE TABLE `funcionarios` (
   `tipo` tinyint(4) NOT NULL,
   `servicos_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `funcionarios`
+--
 
 INSERT INTO `funcionarios` (`id`, `nome`, `tipo`, `servicos_id`) VALUES
 (1, 'Avye Mcgee', 0, 40),
@@ -462,6 +482,10 @@ CREATE TABLE `ingredientes` (
   `nome` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `ingredientes`
+--
+
 INSERT INTO `ingredientes` (`id`, `nome`) VALUES
 (1, 'farinha de trigo'),
 (2, 'ovo'),
@@ -545,7 +569,6 @@ INSERT INTO `locais` (`id`, `nome`, `cidades_id`) VALUES
 (22, 'Casacor', 22),
 (23, 'Shopping da Ilha', 23),
 (24, 'Pacaembú', 24),
-(25, 'Ágora Gastronomia & Eventos', 25),
 (26, 'Praça da Bandeira', 26),
 (27, 'Salão Sabores', 27),
 (28, 'Granja Marileusa', 28),
@@ -576,6 +599,10 @@ CREATE TABLE `login` (
   `senha` varchar(45) NOT NULL,
   `tipo` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `login`
+--
 
 INSERT INTO `login` (`id`, `email`, `senha`, `tipo`) VALUES
 (1, 'tigas245@outlook.com', '601f1889667efaebb33b8c12572835da3f027f78', 1),
@@ -631,6 +658,10 @@ CREATE TABLE `pratos` (
   `preco` double NOT NULL,
   `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `pratos`
+--
 
 INSERT INTO `pratos` (`id`, `nome`, `preco`, `foto`) VALUES
 (1, 'Feijoada', 17.23, 'foto'),
@@ -698,6 +729,10 @@ CREATE TABLE `servicos` (
   `salario` double NOT NULL,
   `espacos_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `servicos`
+--
 
 INSERT INTO `servicos` (`id`, `tipo`, `foto`, `salario`, `espacos_id`) VALUES
 (1, 1, 'foto', 1425.54, 2),
@@ -800,6 +835,7 @@ INSERT INTO `servicos` (`id`, `tipo`, `foto`, `salario`, `espacos_id`) VALUES
 (98, 0, 'foto', 4198.36, 4),
 (99, 1, 'foto', 508.78, 35),
 (100, 1, 'foto', 2477.69, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -822,6 +858,10 @@ CREATE TABLE `vendas` (
   `quantidade` int(11) NOT NULL,
   `servicos_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `vendas`
+--
 
 INSERT INTO `vendas` (`id`, `quantidade`, `servicos_id`) VALUES
 (1, 2945, 31),
@@ -1047,73 +1087,73 @@ ALTER TABLE `vendas`
 -- AUTO_INCREMENT for table `cidades`
 --
 ALTER TABLE `cidades`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `culinaria`
 --
 ALTER TABLE `culinaria`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `edicoes`
 --
 ALTER TABLE `edicoes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `espacos`
 --
 ALTER TABLE `espacos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `ingredientes`
 --
 ALTER TABLE `ingredientes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `locais`
 --
 ALTER TABLE `locais`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `pratos`
 --
 ALTER TABLE `pratos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `servicos`
 --
 ALTER TABLE `servicos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `vendas`
 --
 ALTER TABLE `vendas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- Constraints for dumped tables
@@ -1131,57 +1171,6 @@ ALTER TABLE `edicoes`
 ALTER TABLE `edicoes_has_espacos`
   ADD CONSTRAINT `fk_edicoes_has_espacos_edicoes1` FOREIGN KEY (`edicoes_id`) REFERENCES `edicoes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_edicoes_has_espacos_espacos1` FOREIGN KEY (`espacos_id`) REFERENCES `espacos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `eventos`
---
-ALTER TABLE `eventos`
-  ADD CONSTRAINT `fk_eventos_cidades1` FOREIGN KEY (`cidades_id`) REFERENCES `cidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `funcionarios`
---
-ALTER TABLE `funcionarios`
-  ADD CONSTRAINT `fk_funcionarios_servicos1` FOREIGN KEY (`servicos_id`) REFERENCES `servicos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `funcionarios_has_culinaria`
---
-ALTER TABLE `funcionarios_has_culinaria`
-  ADD CONSTRAINT `fk_funcionarios_has_culinaria_culinaria1` FOREIGN KEY (`culinaria_id`) REFERENCES `culinaria` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_funcionarios_has_culinaria_funcionarios1` FOREIGN KEY (`funcionarios_id`) REFERENCES `funcionarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `locais`
---
-ALTER TABLE `locais`
-  ADD CONSTRAINT `fk_locais_cidades` FOREIGN KEY (`cidades_id`) REFERENCES `cidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `pratos_has_ingredientes`
---
-ALTER TABLE `pratos_has_ingredientes`
-  ADD CONSTRAINT `fk_pratos_has_ingredientes_ingredientes1` FOREIGN KEY (`ingredientes_id`) REFERENCES `ingredientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_pratos_has_ingredientes_pratos1` FOREIGN KEY (`pratos_id`) REFERENCES `pratos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `servicos`
---
-ALTER TABLE `servicos`
-  ADD CONSTRAINT `fk_servicos_espacos1` FOREIGN KEY (`espacos_id`) REFERENCES `espacos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `servicos_has_pratos`
---
-ALTER TABLE `servicos_has_pratos`
-  ADD CONSTRAINT `fk_servicos_has_pratos_pratos1` FOREIGN KEY (`pratos_id`) REFERENCES `pratos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_servicos_has_pratos_servicos1` FOREIGN KEY (`servicos_id`) REFERENCES `servicos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `vendas`
---
-ALTER TABLE `vendas`
-  ADD CONSTRAINT `fk_vendas_servicos1` FOREIGN KEY (`servicos_id`) REFERENCES `servicos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
