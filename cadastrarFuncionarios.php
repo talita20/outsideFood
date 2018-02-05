@@ -75,3 +75,7 @@ if(isset($_POST['cancel'])){
 </html>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="application/javascript">
+    var active = document.getElementById("funcionarios");
+    active.classList.add("active");
+</script>

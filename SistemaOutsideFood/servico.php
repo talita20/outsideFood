@@ -26,7 +26,7 @@ require_once 'headercliente.php';
    <div class="col-md-12">
     <div class="card">
      <div class="card-header" data-background-color="orange">
-      <h4 class="title">Eventos</h4>
+      <h4 class="title">Serviço</h4>
   </div>
   <div class="card-content table-responsive">
       <table class="table">
@@ -85,3 +85,8 @@ require_once 'headercliente.php';
 <?php
 require_once 'footer.php';
 ?>
+
+<script type="application/javascript">
+    var active = document.getElementById("servico");
+    active.classList.add("active");
+</script>

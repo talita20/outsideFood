@@ -1,5 +1,5 @@
  <?php
- require_once 'headeradmin.php';
+ require_once 'headercliente.php';
 
  ?>   
 
@@ -60,3 +60,8 @@
 <?php
 require_once 'footer.php';
 ?>
+
+<script type="application/javascript">
+    var active = document.getElementById("vendas");
+    active.classList.add("active");
+</script>

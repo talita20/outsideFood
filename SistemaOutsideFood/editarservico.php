@@ -66,6 +66,12 @@ require_once 'footer.php';
 ?>
 
 
+<script type="application/javascript">
+    var active = document.getElementById("servico");
+    active.classList.add("active");
+</script>
+
+
 <script>
     $(document).on('click', '#close-preview', function(){ 
         $('.image-preview').popover('hide');

@@ -6,7 +6,7 @@ require_once 'headercliente.php';
 <div class="content">
  <div class="container-fluid">
   <div class="collapse navbar-collapse">
-   <a href="./adicionarservico.php">
+   <a href="./adicionarprato.php">
        <button type="button" class="btn btn-warning">Adicionar</button>
    </a>
    <form class="navbar-form navbar-right" role="search" action="evento.php" method="get">
@@ -46,7 +46,7 @@ require_once 'headercliente.php';
              <td class="">R$200,00</td>
              <td class="actions">
                       <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
-                      <a href="./editarservico.php"><i class="material-icons">mode_edit</i></a>
+                      <a href="./editarprato.php"><i class="material-icons">mode_edit</i></a>
                   </td>
               </tr>
 
@@ -85,3 +85,9 @@ require_once 'headercliente.php';
 <?php
 require_once 'footer.php';
 ?>
+
+
+<script type="application/javascript">
+    var active = document.getElementById("pratos");
+    active.classList.add("active");
+</script>

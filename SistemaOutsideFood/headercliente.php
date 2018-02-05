@@ -49,7 +49,7 @@
                             <p>Serviço</p>
                         </a>
                     </li>
-                    <li id="funcjonarios">
+                    <li id="funcionarios">
                         <a href="./funcionarios.php">
                             <i class="material-icons">content_paste</i>
                             <p>Funcionário</p>

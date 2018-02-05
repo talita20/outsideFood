@@ -63,6 +63,13 @@ require_once 'headercliente.php';
 require_once 'footer.php';
 ?>
 
+
+<script type="application/javascript">
+    var active = document.getElementById("pratos");
+    active.classList.add("active");
+</script>
+
+
 <script>
     $(document).on('click', '#close-preview', function(){ 
         $('.image-preview').popover('hide');
