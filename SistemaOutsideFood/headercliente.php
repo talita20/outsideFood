@@ -31,14 +31,14 @@
         Tip 2: you can also add an image using data-image tag
     -->
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
+                <a href="./cliente.php" class="simple-text">
                 <img class="logo1" src="assets/img/oft1.png">
                 </a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li id="dashboard">
-                        <a href="dashboard.html">
+                        <a href="./cliente.php">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
