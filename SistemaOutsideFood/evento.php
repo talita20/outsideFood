@@ -24,6 +24,8 @@ if(isset($_POST['insert'])){
     $eventos->setData($_POST['data']);
     $eventos->setHorario($_POST['horario']);
     $eventos->setOrganizador($_POST['organizador']);
+    $eventos->setCidade($_POST['cidades_id']);
+    $eventos->setLocal($_POST['locais_id']);
     
     if($_FILES['foto']['error'] != 4){
         if($_FILES['foto']['size'] <= 1000000){
@@ -54,15 +56,6 @@ if(isset($_POST['insert'])){
         }else {
             $error = "A imagem deve possuir tamanho menor que 1Mb!";
         }
-    }else{
-        $error = "Erro ao inserir, tente novamente!";
-    }
-
-    $eventos->setCidade($_POST['cidades_id']);
-    $eventos->setLocal($_POST['locais_id']);
-                        
-    if($eventos->insert() == 1){
-        $result = "Evento inserido com sucesso!";
     }else{
         $error = "Erro ao inserir, tente novamente!";
     }
@@ -123,7 +116,7 @@ if(isset($_POST['delete'])){
          ?>
          <tr>
              <td class="nome"><?php echo $row->nome; ?></td>
-             <td class="data"><?php echo $row->data; ?></td>
+             <td class="data"><?php echo date("d/m/Y", strtotime($row->data)); ?></td>
              <td class="horario"><?php echo $row->horario; ?></td>
              <td class="organizador"><?php echo $row->organizador; ?></td>
              <?php 
@@ -138,7 +131,7 @@ if(isset($_POST['delete'])){
                    if($rowLocal->id == $row->locais_id){ ?>
                    <td class="local"><?php echo $rowLocal->nome; ?></td>
                    <?php } } ?>
-                   <td class="foto"><?php echo $row->foto; ?></td>
+                   <td class="foto"><img src="<?php echo $row->foto ?>" alt="img"></td>
                    <td class="actions">
                       <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $row->id ?>" ><i class="material-icons">delete</i></a>
                       <a href=""><i class="material-icons">mode_edit</i></a>
