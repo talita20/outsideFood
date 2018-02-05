@@ -569,6 +569,7 @@ INSERT INTO `locais` (`id`, `nome`, `cidades_id`) VALUES
 (22, 'Casacor', 22),
 (23, 'Shopping da Ilha', 23),
 (24, 'Pacaembú', 24),
+(25, 'Ágora Gastronomia & Eventos', 25),
 (26, 'Praça da Bandeira', 26),
 (27, 'Salão Sabores', 27),
 (28, 'Granja Marileusa', 28),
