@@ -16,6 +16,21 @@ if(isset($_POST['insert'])){
     $error = "Erro ao inserir. Tente novamente";
   }
 }
+
+if(isset($_POST['edit'])){
+  $espacos->setId($_POST['id']);
+  $espacos->setNome($_POST['nome']);
+  $espacos->setAluguel($_POST['aluguel']);
+  $espacos->setMetragem($_POST['metragem']);
+  $espacos->setBenfeitoria($_POST['benfeitoria']);
+
+  if($espacos->edit() == 1){
+    $result = "Espaço editado com sucesso!";
+  }else{
+    $error = "Erro ao editar. Tente novamente";
+  }
+}
+
 if(isset($_POST['delete'])){
   $espacos->setId($_POST['id']);
   if($espacos->delete() == 1){
@@ -75,7 +90,7 @@ if(isset($_POST['delete'])){
                     <td class="benfeitoria"><?php echo $row->benfeitoria; ?></td>
                     <td class="actions">
                       <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $row->id ?>" ><i class="material-icons">delete</i></a>
-                      <a href="./editarespaco.php"><i class="material-icons">mode_edit</i></a>
+                      <a href="./editarEspaco.php?id=<?php echo $row->id ?>"><i class="material-icons">mode_edit</i></a>
                     </td>                                                  
                   </tr>
 
