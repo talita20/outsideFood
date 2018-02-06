@@ -1,123 +1,151 @@
 <?php
 require_once 'headercliente.php';
+require_once 'assets/php/classes/classFuncionarios.php';
+require_once 'assets/php/classes/classServicos.php';
+require_once 'assets/php/classes/classCulinaria.php';
+$funcionarios= new Funcionarios();
+$servicos= new Servicos();
+$culinaria= new Culinaria();
+
+
+
+if(isset($_POST['delete'])){
+  $funcionarios->setId($_POST['id']);
+
+  if($funcionarios->delete() == 1){
+    $result = "Excluido com sucesso!";
+  }else{
+    $error = "Erro ao excluir";
+  }
+
+}
 ?>
 
 
 <div class="content">
-                              <?php
-      if(isset($warning)){
-        ?>
-        <div class="alert alert-warning">
-          <?php echo $warning; ?>      
-        </div> 
-        <?php }else if(isset($result)) {
-          ?>
-          <div class="alert alert-success">
-            <?php echo $result; ?>
-          </div>
-          <?php
-        }else if(isset($error)){
-          ?>
-          <div class="alert alert-danger">
-            <?php echo $error; ?>
-          </div>
-          <?php
-        }
-        ?>
- <div class="container-fluid">
-  <div class="collapse navbar-collapse">
-   <a href="./adicionarfuncionario.php">
-       <button type="button" class="btn btn-warning">Adicionar</button>
-   </a>
-   <form class="navbar-form navbar-right" role="search" action="evento.php" method="get">
-    <div class="form-group  is-empty">
-     <input type="text" name="nome" class="form-control" placeholder="Pesquisar">
-     <span class="material-input"></span>
+  <?php
+  if(isset($warning)){
+    ?>
+    <div class="alert alert-warning">
+      <?php echo $warning; ?>      
+    </div> 
+    <?php }else if(isset($result)) {
+      ?>
+      <div class="alert alert-success">
+        <?php echo $result; ?>
+      </div>
+      <?php
+    }else if(isset($error)){
+      ?>
+      <div class="alert alert-danger">
+        <?php echo $error; ?>
+      </div>
+      <?php
+    }
+    ?>
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse">
+       <a href="./adicionarfuncionario.php">
+         <button type="button" class="btn btn-warning">Adicionar</button>
+       </a>
+       <form class="navbar-form navbar-right" role="search" action="evento.php" method="get">
+        <div class="form-group  is-empty">
+         <input type="text" name="nome" class="form-control" placeholder="Pesquisar">
+         <span class="material-input"></span>
+       </div>
+       <button type="submit" name="pesquisa" class="btn btn-white btn-round btn-just-icon">
+         <i class="material-icons">search</i>
+         <div class="ripple-container"></div>
+       </button>
+     </form>
+   </div>
  </div>
- <button type="submit" name="pesquisa" class="btn btn-white btn-round btn-just-icon">
-     <i class="material-icons">search</i>
-     <div class="ripple-container"></div>
- </button>
-</form>
-</div>
-</div>
-<div class="container-fluid">
+ <div class="container-fluid">
   <div class="row">
    <div class="col-md-12">
     <div class="card">
      <div class="card-header" data-background-color="orange">
       <h4 class="title">Funcionários</h4>
-  </div>
-  <div class="card-content table-responsive">
+    </div>
+    <div class="card-content table-responsive">
       <table class="table">
        <thead class="text-primary">
         <th>Nome</th>
         <th>Tipo</th>
         <th class="actions">Ações</th>
-    </thead>
-    <tbody>
-
-         <tr>
-             <td class="Nome">José</td>
-             <td class="Tipo">Chefe</td>
-
-             <td class="actions">
-                      <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
-                      <a href="./editarfuncionario.php"><i class="material-icons">mode_edit</i></a>
-                  </td>
-              </tr>
-
+      </thead>
+      <tbody>
+        <?php $todosFunc = $funcionarios->index();
+        while($row = $todosFunc->fetch(PDO::FETCH_OBJ)){
+          ?>
+          <tr>
+           <td class="Nome"><?php echo $row->nome ?></td>
+           <?php if($row->tipo == 0){ ?>
+           <td class="Tipo">Auxiliar</td>
+           <?php }else{ ?>
+           <td class="Tipo">Chef</td>
+           <?php } ?>
+           <td class="actions">
+            <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $row->id ?>" ><i class="material-icons">delete</i></a>
+            <a href="./editarfuncionario.php?id=<?php echo $row->id ?>"><i class="material-icons">mode_edit</i></a>
+          </td>
+        </tr>
+        <?php } ?>
       </tbody>
-  </table>
-</div>
+    </table>
+  </div>
 </div>
 </div>
 </div>
 </div>
 </div>
 <!-- Modal -->
-
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form action="evento.php" method="post">
-     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Excluir</h5>
+<?php $todosFunc = $funcionarios->index();
+while($row = $todosFunc->fetch(PDO::FETCH_OBJ)){
+  ?>
+  <form action="funcionarios.php" method="post">
+    <div class="modal fade" id="exampleModal<?php echo $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <form action="evento.php" method="post">
+       <div class="modal-dialog" role="document">
+        <div class="modal-content">
+         <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Excluir</h5>
             <!--         <span aria-hidden="true">X</span>
             -->        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             </button>
-        </div>
-        <div class="modal-body">
-            Dessa excluir esse evento?
-        </div>
-        <div class="modal-footer">
+          </div>
+          <div class="modal-body">
+            Dessa excluir esse funcionario?
+          </div>
+          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-            <input type="hidden" name="id" value="">
+            <input type="hidden" name="id" value="<?php echo $row->id ?>">
             <button id="btnamarelo" type="submit" name="delete" class="btn btn-primary">Sim</button>
+          </div>
         </div>
-    </div>
-</div>
-</form>
-</div>
-<?php
-require_once 'footer.php';
-?>
+      </div>
+    </form>
+  </div>
+  <?php } ?>
+  <?php
+  require_once 'footer.php';
+  ?>
 
-<script type="application/javascript">
+  <script type="application/javascript">
     var active = document.getElementById("funcionarios");
     active.classList.add("active");
-</script>
+  </script>
 
-            <script>
-                  $(document).ready(function() {
-                   setTimeout("$('#temporizador').fadeIn( 300 ).delay( 1500 ).fadeOut( 400 )");
-                  $(".alert-success").fadeTo(1000, 500).slideUp(300, function(){
-                  $(".alert-success").alert('close');
-                  window.location.href = "funcionarios.php";
-                  });
-                  $(".alert-danger").fadeTo(1000, 500).slideUp(300, function(){
-                  $(".alert-danger").alert('close');
-                  window.location.href = "funcionarios.php";
-                  });
-                 });
-               </script>
+  <script>
+    $(document).ready(function() {
+     setTimeout("$('#temporizador').fadeIn( 300 ).delay( 1500 ).fadeOut( 400 )");
+     $(".alert-success").fadeTo(1000, 500).slideUp(300, function(){
+      $(".alert-success").alert('close');
+      window.location.href = "funcionarios.php";
+    });
+     $(".alert-danger").fadeTo(1000, 500).slideUp(300, function(){
+      $(".alert-danger").alert('close');
+      window.location.href = "funcionarios.php";
+    });
+   });
+ </script>

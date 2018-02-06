@@ -1,5 +1,11 @@
  <?php
  require_once 'headercliente.php';
+ require_once 'assets/php/classes/classFuncionarios.php';
+   require_once 'assets/php/classes/classServicos.php';
+      require_once 'assets/php/classes/classCulinaria.php';
+   $funcionarios= new Funcionarios();
+   $servicos= new Servicos();
+   $culinaria= new Culinaria();
  ?>   
 
  <div class="content">
@@ -12,7 +18,7 @@
                         <p class="category">Cadastre seu funcionário</p>
                     </div>
                     <div class="card-content">
-                        <form action="evento.php" method="post" enctype="multipart/form-data">
+                        <form action="funcionarios.php" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
@@ -35,10 +41,14 @@
                                          <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Tipo de culinária</label>
-                                            <select id="select" name="locais_id" id="locais_id" for="local" action="evento.php" class="form-control">
+                                            <select id="select" name="culinaria_id" id="culinaria_id" for="local" action="funcionarios.php" class="form-control">
                                             <option>Selecione</option>
-                                                <option id="" value="">
-                                                </option>                                                
+                                                <?php 
+                                            $stmtCulinaria = $culinaria->index();
+                                            while($rowCulinaria = $stmtCulinaria->fetch(PDO::FETCH_OBJ)){
+                                                ?>
+                                                <option id="<?php echo $rowCulinaria->id; ?>" value="<?php echo $rowCulinaria->id; ?>"><?php echo $rowCulinaria->tipo_culinaria ?></option>
+                                                <?php } ?>                                               
                                             </select>
                                         </div>
                                     </div>
