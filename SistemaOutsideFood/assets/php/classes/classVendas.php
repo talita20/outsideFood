@@ -80,6 +80,20 @@ class Vendas
         $stmt->execute();
         return $stmt;
     }
+
+    public function quantidadePratosFT(){
+        $stmt = $this->conn->prepare("SELECT V.quantidade, S.nome FROM vendas AS V, servicos AS S WHERE S.id = V.servicos_id AND S.tipo = 0 ORDER BY V.quantidade DESC");
+        $stmt->bindParam(":id", $this->id);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function quantidadePratosB(){
+        $stmt = $this->conn->prepare("SELECT V.quantidade, S.nome FROM vendas AS V, servicos AS S WHERE S.id = V.servicos_id AND S.tipo = 1 ORDER BY V.quantidade DESC");
+        $stmt->bindParam(":id", $this->id);
+        $stmt->execute();
+        return $stmt;
+    }
     
 }
 ?>
