@@ -67,7 +67,12 @@
                             <p>Pratos</p>
                         </a>
                     </li>
-
+                     <li id="ingredientes">
+                        <a href="./ingredientes.php">
+                            <i class="material-icons">shopping_cart</i>
+                            <p>Ingredientes</p>
+                        </a>
+                    </li>
 
                     <li class="active-pro" style="padding-bottom: 50px;">
                         
