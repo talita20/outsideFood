@@ -4,6 +4,26 @@ require_once 'headercliente.php';
 
 
 <div class="content">
+         <?php
+      if(isset($warning)){
+        ?>
+        <div class="alert alert-warning">
+          <?php echo $warning; ?>      
+        </div> 
+        <?php }else if(isset($result)) {
+          ?>
+          <div class="alert alert-success">
+            <?php echo $result; ?>
+          </div>
+          <?php
+        }else if(isset($error)){
+          ?>
+          <div class="alert alert-danger">
+            <?php echo $error; ?>
+          </div>
+          <?php
+        }
+        ?>
  <div class="container-fluid">
   <div class="collapse navbar-collapse">
    <a href="./adicionarservico.php">
@@ -11,7 +31,7 @@ require_once 'headercliente.php';
    </a>
    <form class="navbar-form navbar-right" role="search" action="evento.php" method="get">
     <div class="form-group  is-empty">
-     <input type="text" name="nome" class="form-control" placeholder="Search">
+     <input type="text" name="nome" class="form-control" placeholder="Pesquisar">
      <span class="material-input"></span>
  </div>
  <button type="submit" name="pesquisa" class="btn btn-white btn-round btn-just-icon">
@@ -90,3 +110,16 @@ require_once 'footer.php';
     var active = document.getElementById("servico");
     active.classList.add("active");
 </script>
+            <script>
+                  $(document).ready(function() {
+                   setTimeout("$('#temporizador').fadeIn( 300 ).delay( 1500 ).fadeOut( 400 )");
+                  $(".alert-success").fadeTo(1000, 500).slideUp(300, function(){
+                  $(".alert-success").alert('close');
+                  window.location.href = "servico.php";
+                  });
+                  $(".alert-danger").fadeTo(1000, 500).slideUp(300, function(){
+                  $(".alert-danger").alert('close');
+                  window.location.href = "servico.php";
+                  });
+                 });
+               </script>

@@ -99,7 +99,7 @@ if(isset($_POST['delete'])){
    </a>
    <form class="navbar-form navbar-right" role="search" action="evento.php" method="get">
     <div class="form-group  is-empty">
-     <input type="text" name="nome" id="nome" class="form-control" placeholder="Search">
+     <input type="text" name="nome" id="nome" class="form-control" placeholder="Pesquisar">
      <span class="material-input"></span>
  </div>
  <button type="submit" name="pesquisa" id="pesquisa" class="btn btn-white btn-round btn-just-icon">
