@@ -764,7 +764,7 @@ INSERT INTO `servicos` (`id`,`nome`,`tipo`,`foto`,`salario`,`espacos_id`) VALUES
 (25,"Enim Ltd",1,"foto",376,34),
 (26,"Nunc Laoreet Lectus PC",1,"foto",605,1),
 (27,"Sed Foundation",0,"foto",282,30),
-(28,"Vivamus Sit Amet Institute",0,"foto",547,20),"foto"
+(28,"Vivamus Sit Amet Institute",0,"foto",547,20),
 (29,"Ac Turpis Industries",1,"foto",700,10),
 (30,"Non Enim Mauris LLC",0,"foto",363,18),
 (31,"Mauris Blandit Ltd",0,"foto",303,5),
