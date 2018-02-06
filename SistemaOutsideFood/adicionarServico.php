@@ -1,8 +1,12 @@
 <?php
-require_once 'headercliente.php';
+require_once 'headercliente.php'; 
+require_once 'assets/php/classes/classServicos.php';
+require_once 'assets/php/classes/classEspacos.php';
+$servicos = New Servicos();
+$espacos = New Espacos();
 ?>
 
- <div class="content">
+<div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -12,25 +16,46 @@ require_once 'headercliente.php';
                         <p class="category">Cadastre seu serviço</p>
                     </div>
                     <div class="card-content">
-                        <form action="evento.php" method="post" enctype="multipart/form-data">
+                        <form action="servico.php" method="post" enctype="multipart/form-data">
                             <div class="row">
+                                <div class="col-md-5">
+                                    <label>Nome</label>
+                                    <div class="form-group label-floating">
+                                        <input type="text" name="nome" class="form-control">
+                                    </div>
+                                </div>
                                 <div class="col-md-5">
                                 	<label>Tipo</label>
                                     <div class="form-group label-floating">
-                                     <form>
-									  <input type="radio" name="gender" value="male" > Barraca<br>
-									  <input type="radio" name="gender" value="female"> Food Truck<br>
-									</form>   
+                                     <input type="radio" name="tipo" value="1"> Barraca
+                                     <input type="radio" name="tipo" value="0"> Food Truck 
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="row">
+                             <div class="col-md-5">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Salário</label>
+                                    <input type="text" name="salario" class="form-control" onkeyup="moeda(this);">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Espaço</label>
+                                    <select id="select" name="espacos_id" id="espacos_id" for="espacos" action="servico.php" class="form-control">
+                                        <option>Selecione</option>
+                                        <?php 
+                                        $stmtEspaco = $espacos->index();
+                                        while($rowEspaco = $stmtEspaco->fetch(PDO::FETCH_OBJ)){
+                                            ?>
+                                            <option id="<?php echo $rowEspaco->id; ?>" value="<?php echo $rowEspaco->id; ?>">Espaço: <?php echo $rowEspaco->nome ?> - Benfeitoria: <?php echo $rowEspaco->benfeitoria ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Salário</label>
-                                        <input type="text" name="organizador" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row">    
-                                    <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                            </div>
+                            <div class="row">    
+                                <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                                         <label>Foto</label>
                                         <!-- image-preview-filename input [CUT FROM HERE]-->
                                         <div class="input-group image-preview">
@@ -49,16 +74,16 @@ require_once 'headercliente.php';
                                             </span>
                                         </div><!-- /input-group image-preview [TO HERE]--> 
                                     </div>
-                                </div>
-                                <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Serviço</button>
-                                <div class="clearfix"></div>
-                            </form>
-                        </div>
-                    </div>                                
-                </div>
+                            </div>
+                            <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Adicionar Serviço</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>                                
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <?php
@@ -77,12 +102,12 @@ require_once 'footer.php';
     // Hover befor close the preview
     $('.image-preview').hover(
         function () {
-         $('.image-preview').popover('show');
-     }, 
-     function () {
-         $('.image-preview').popover('hide');
-     }
-     );    
+           $('.image-preview').popover('show');
+       }, 
+       function () {
+           $('.image-preview').popover('hide');
+       }
+       );    
 });
 
     $(function() {
@@ -130,4 +155,15 @@ require_once 'footer.php';
         reader.readAsDataURL(file);
     });  
 });
+
+    function moeda(z) {
+        v = z.value;
+        v = v.replace(/\D/g, "") // permite digitar apenas numero
+        v = v.replace(/(\d{1})(\d{14})$/, "$1.$2") // coloca ponto antes dos ultimos digitos
+        v = v.replace(/(\d{1})(\d{11})$/, "$1.$2") // coloca ponto antes dos ultimos 11 digitos
+        v = v.replace(/(\d{1})(\d{8})$/, "$1.$2") // coloca ponto antes dos ultimos 8 digitos
+        v = v.replace(/(\d{1})(\d{5})$/, "$1.$2") // coloca ponto antes dos ultimos 5 digitos
+        v = v.replace(/(\d{1})(\d{1,2})$/, "$1,$2") // coloca virgula antes dos ultimos 2 digitos
+        z.value = v;
+    }
 </script>
