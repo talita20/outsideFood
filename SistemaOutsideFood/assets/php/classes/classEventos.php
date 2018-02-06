@@ -80,6 +80,22 @@ class Eventos{
 			return 0;
 		}
 	}
+
+	public function edit2(){
+		try{
+			$stmt = $this->conn->prepare("UPDATE `eventos` SET `nome` = :nome, `data` = :data, `horario` = :horario, `organizador` = :organizador WHERE `id` = :id");
+			$stmt->bindParam(":id", $this->id);
+			$stmt->bindParam(":nome", $this->nome);
+			$stmt->bindParam(":data", $this->data);
+			$stmt->bindParam(":horario", $this->horario);
+			$stmt->bindParam(":organizador", $this->organizador);
+			$stmt->execute();
+			return 1;
+		}catch(PDOException $e){
+			echo $e->getMessage();
+			return 0;
+		}
+	}
 	
 	public function delete(){
 		try{
