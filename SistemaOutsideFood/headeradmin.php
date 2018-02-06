@@ -72,7 +72,7 @@
                         </a>
                     </li>
                     <li id="album">
-                        <a href="./maps.html">
+                        <a href="./albumfotos.php">
                             <i class="material-icons">photo_library</i>
                             <p>Álbum de Fotos</p>
                         </a>
