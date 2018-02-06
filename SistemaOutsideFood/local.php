@@ -2,9 +2,33 @@
 require_once 'headeradmin.php';
 require_once 'assets/php/classes/classLocais.php';
 require_once 'assets/php/classes/classCidades.php';
+require_once 'assets/vendor/autoload.php';
 
 $locais = New Locais();
 $cidades = New Cidades();
+use JasonGrimes\Paginator;
+
+//Paginacao
+$maxPorPagina = 150;
+$paginaAtual = filter_var(isset($_GET['pagina']) ? $_GET['pagina'] : 1, FILTER_SANITIZE_NUMBER_INT);
+
+$url = 'locais.php?pagina=(:num)';
+$inicio = ($maxPorPagina * $paginaAtual) - $maxPorPagina;
+
+if(isset($_GET['nome'])){
+  $quantidade = $locais->contadorPesquisa($_GET['nome']);
+  $index = $locais->paginacaoPesquisa($_GET['nome'], $maxPorPagina, $inicio);
+  $url = 'locais.php?pagina=(:num)&nome=' . $_GET['nome'];
+  $queryResult = $index;
+}else{
+  $quantidade = $locais->contador();
+  $index = $locais->paginacao($maxPorPagina, $inicio);
+  $queryResult = $index;
+}
+
+$paginator = new Paginator($quantidade, $maxPorPagina, $paginaAtual, $url);
+$paginator->setMaxPagesToShow(7);
+  //Fim paginacao
 
 if (isset($_POST['select'])) {
     $cidades->setCidades($_POST['cidades_id']);
@@ -74,10 +98,10 @@ if(isset($_POST['delete'])){
       </a>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group  is-empty">
-            <input type="text" class="form-control" placeholder="Pesquisar">
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Pesquisar">
             <span class="material-input"></span>
         </div>
-        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+        <button type="submit" name="pesquisa" id="pesquisa"  class="btn btn-white btn-round btn-just-icon">
             <i class="material-icons">search</i>
             <div class="ripple-container"></div>
         </button>
@@ -105,20 +129,19 @@ if(isset($_POST['delete'])){
 
                             <?php
 
-                            $todosLocais = $locais->index();
-                            while($row = $todosLocais->fetch(PDO::FETCH_OBJ)){
+                            for($i=0;$i<sizeof($queryResult);$i++){
                                 ?>
                                 <tr>
-                                    <td class="nome"><?php echo $row->nome; ?></td>
+                                    <td class="nome"><?php echo $queryResult[$i]->nome; ?></td>
                                     <?php 
                                     $todasCidades = $cidades->index();
                                     while($rowCidade = $todasCidades->fetch(PDO::FETCH_OBJ)){
-                                     if($rowCidade->id == $row->cidades_id){ ?>
+                                     if($rowCidade->id == $queryResult[$i]->cidades_id){ ?>
                                      <td class="cidade"><?php echo $rowCidade->nome; ?></td>
                                      <?php } } ?>
                                      <td class="actions">
-                                      <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $row->id ?>" ><i class="material-icons">delete</i></a>
-                                      <a href="./editarlocal.php?id=<?php echo $row->id ?>"><i class="material-icons">mode_edit</i></a>
+                                      <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $queryResult[$i]->id ?>" ><i class="material-icons">delete</i></a>
+                                      <a href="./editarlocal.php?id=<?php echo $queryResult[$i]->id ?>"><i class="material-icons">mode_edit</i></a>
                                   </td>
                               </tr>
 
@@ -133,6 +156,14 @@ if(isset($_POST['delete'])){
                   </table>
               </div>
           </div>
+          <!-- /#list -->
+                <div id="bottom" class="row" align="center">
+                  <div class="col-md-12">
+                    <?php echo $paginator->toHtml(); ?>
+                  </ul><!-- /.pagination -->
+                </div>
+              </div> <!-- /#bottom -->
+            </div><!-- /#main -->
       </div>
   </div>
 </div>
@@ -142,10 +173,9 @@ if(isset($_POST['delete'])){
 <!-- Modal -->
 <?php
 
-$todosLocais = $locais->index();
-while($row = $todosLocais->fetch(PDO::FETCH_OBJ)){
+for($i=0;$i<sizeof($queryResult);$i++){
     ?>
-    <div class="modal fade" id="exampleModal<?php echo $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal<?php echo $queryResult[$i]->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <form action="local.php" method="post">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -160,7 +190,7 @@ while($row = $todosLocais->fetch(PDO::FETCH_OBJ)){
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-    <input type="hidden" name="id" value="<?php echo $row->id ?>">
+    <input type="hidden" name="id" value="<?php echo $queryResult[$i]->id ?>">
     <button id="btnamarelo" type="submit" name="delete" class="btn btn-primary">Sim</button>
 </div>
 </div>
