@@ -41,6 +41,27 @@ if(isset($_POST['delete'])){
 ?>
 
             <div class="content">
+                                 <?php
+      if(isset($warning)){
+        ?>
+        <div class="alert alert-warning">
+          <?php echo $warning; ?>      
+        </div> 
+        <?php }else if(isset($result)) {
+          ?>
+          <div class="alert alert-success">
+            <?php echo $result; ?>
+          </div>
+          <?php
+        }else if(isset($error)){
+          ?>
+          <div class="alert alert-danger">
+            <?php echo $error; ?>
+          </div>
+          <?php
+        }
+        ?>
+
  				<div class="container-fluid">
                     <div class="collapse navbar-collapse">
                     <a href="./adicionarcidades.php">
@@ -66,6 +87,7 @@ if(isset($_POST['delete'])){
                                 <div class="card-header" data-background-color="orange">
                                     <h4 class="title">Cidades</h4>
                                 </div>
+      
                                 <div class="card-content table-responsive">
                                     <table class="table">
                                         <thead class="text-primary">
@@ -136,6 +158,21 @@ while($row = $todasCidades->fetch(PDO::FETCH_OBJ)){
 <?php
 require_once 'footer.php';
 ?>
+
+
+ <script>
+                  $(document).ready(function() {
+                   setTimeout("$('#temporizador').fadeIn( 300 ).delay( 1500 ).fadeOut( 400 )");
+                  $(".alert-success").fadeTo(1000, 500).slideUp(300, function(){
+                  $(".alert-success").alert('close');
+                  window.location.href = "cidade.php";
+                  });
+                  $(".alert-danger").fadeTo(1000, 500).slideUp(300, function(){
+                  $(".alert-danger").alert('close');
+                  window.location.href = "cidade.php";
+                  });
+                 });
+               </script>
 
 <script type="application/javascript">
     var active = document.getElementById("cidade");
