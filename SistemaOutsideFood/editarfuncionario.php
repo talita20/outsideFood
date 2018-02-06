@@ -1,5 +1,14 @@
  <?php
  require_once 'headercliente.php';
+ require_once 'assets/php/classes/classFuncionarios.php';
+require_once 'assets/php/classes/classServicos.php';
+require_once 'assets/php/classes/classCulinaria.php';
+$funcionarios = new Funcionarios();
+$servicos = new Servicos();
+$culinaria = new Culinaria();
+$funcionarios->setId($_GET['id']);
+
+$func = $funcionarios->view();
  ?>   
 
  <div class="content">
@@ -12,21 +21,25 @@
                         <p class="category">Atualize seu funcionário</p>
                     </div>
                     <div class="card-content">
-                        <form action="evento.php" method="post" enctype="multipart/form-data">
+                        <form action="funcionarios.php" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Nome</label>
-                                        <input type="text" name="nome" class="form-control">
+
+                                        <input type="text" name="nome" class="form-control" value="<?php echo $func->nome?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label>Tipo</label>
                                     <div class="form-group label-floating">
-                                     <form>
-                                      <input type="radio" name="gender" value="" > Chefe<br>
-                                      <input type="radio" name="gender" value=""> Auxiliar<br>
-                                    </form>   
+                                     <?php if($func->tipo == 0){ ?>
+                                        <input type="radio" name="tipo" value="0" checked> Chefe
+                                        <input type="radio" name="tipo" value="1"> Auxiliar
+                                        <?php }else{ ?>
+                                        <input type="radio" name="tipo" value="0"> Chefe
+                                        <input type="radio" name="tipo" value="1" checked> Auxiliar
+                                        <?php } ?>  
                                     </div>
                                 </div>
                             </div>
@@ -35,15 +48,20 @@
                                          <div class="col-md-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Tipo de culinária</label>
-                                            <select id="select" name="locais_id" id="locais_id" for="local" action="evento.php" class="form-control">
+                                            <select id="select" name="culinaria_id" id="culinaria_id" for="culinaria" action="funcionarios.php" class="form-control" value="<?php echo $func->tipo?>">
                                             <option>Selecione</option>
-                                                <option id="" value="">
-                                                </option>                                                
+                                                <?php 
+                                            $stmtCulinaria = $culinaria->index();
+                                            while($rowCulinaria = $stmtCulinaria->fetch(PDO::FETCH_OBJ)){
+                                                ?>
+                                                <option id="<?php echo $rowCulinaria->id; ?>" value="<?php echo $rowCulinaria->id; ?>"><?php echo $rowCulinaria->tipo_culinaria ?></option>
+                                                <?php } ?>                                             
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                             <input type="hidden" name="id" value="<?php echo $func->id ?>">
                                 <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Atualizar Funcionário</button>
                                 <div class="clearfix"></div>
                             </form>
