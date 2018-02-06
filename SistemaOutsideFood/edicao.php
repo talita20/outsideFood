@@ -23,6 +23,20 @@ if(isset($_POST['insert'])){
     }
 }
 
+if(isset($_POST['edit'])){
+    $edicoes->setId($_POST['id']);
+    $edicoes->setNumero($_POST['numero']);
+    $edicoes->setCapacidade($_POST['capacidade']);
+    $edicoes->setLotacao($_POST['lotacao']);
+    $edicoes->setEventos($_POST['eventos_id']);
+
+    if($edicoes->edit() == 1){
+        $result = "Edição alterada com sucesso!";
+    }else{
+        $error = "Erro ao alterar. Tente novamente";
+    }
+}
+
 
 if(isset($_POST['delete'])){
     $edicoes->setId($_POST['id']);
@@ -89,7 +103,7 @@ if(isset($_POST['delete'])){
                                        <td class="lotacao"><?php echo $row->lotacao; ?></td>
                                        <td class="actions">
                                         <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $row->id ?>" ><i class="material-icons">delete</i></a>
-                                        <a href="./editaredicao.php"><i class="material-icons">mode_edit</i></a>
+                                        <a href="./editaredicao.php?id=<?php echo $row->id ?>"><i class="material-icons">mode_edit</i></a>
                                     </td> 
                                 </tr>
 

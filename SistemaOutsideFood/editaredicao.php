@@ -1,8 +1,15 @@
 <?php
- require_once 'headeradmin.php';
- ?>   
+require_once 'headeradmin.php';
+require_once 'assets/php/classes/classEdicoes.php';
+require_once 'assets/php/classes/classEventos.php';
 
- <div class="content">
+$edicoes = new Edicoes();
+$eventos = new Eventos();
+$edicoes->setId($_GET['id']);
+$edi = $edicoes->view();
+?>   
+
+<div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -13,49 +20,53 @@
                     </div>
                     <div class="card-content">
                         <form action="edicao.php" method="post">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Evento</label>
-                                        
-                                        <input type="text" name="numero" class="form-control">
-                                    </div>
-                                        </div>
-                                    </div>
+                           <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Evento</label>
+                                        <?php 
+                                        $todosEventos = $eventos->index();
+                                        while($rowEvento = $todosEventos->fetch(PDO::FETCH_OBJ)){
+                                           if($rowEvento->id == $edi->eventos_id){ ?>
+                                           <input type="text" name="eventos_id" class="form-control" value="<?php echo $rowEvento->nome; ?>" readonly>
+                                           <?php } } ?>
+                                   </div>
+                               </div>
 
-                                <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Edição</label>
-                                        <input type="number" name="numero" class="form-control">
-                                    </div>
+
+                               <div class="col-md-5">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Edição</label>
+                                    <input type="number" name="numero" class="form-control" value="<?php echo $edi->numero ?>">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Capacidade</label>
-                                        <input type="number" name="capacidade" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Lotação</label>
-                                        <input id="formulario" name="lotacao" type="number" class="form-control">
-                                    </div>
-                                </div>
-                                
-                                </div>
-                                <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Atualizar Edição</button>
-
-                                <div class="clearfix"></div>
-                            </form>
                         </div>
-                    </div>                                
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Capacidade</label>
+                                    <input type="number" name="capacidade" class="form-control" value="<?php echo $edi->capacidade ?>">
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Lotação</label>
+                                    <input id="formulario" name="lotacao" type="number" class="form-control" value="<?php echo $edi->lotacao ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="id" value="<?php echo $edi->id ?>">
+                        <button type="submit" name="edit" id="btnamarelo" class="btn btn-primary pull-right">Atualizar Edição</button>
+
+                        <div class="clearfix"></div>
+                    </form>
                 </div>
-            </div>
+            </div>                                
         </div>
     </div>
+</div>
+</div>
 </div>
 
 <?php
@@ -69,12 +80,12 @@ require_once 'footer.php';
     // Hover befor close the preview
     $('.image-preview').hover(
         function () {
-           $('.image-preview').popover('show');
-       }, 
-       function () {
-           $('.image-preview').popover('hide');
-       }
-       );    
+         $('.image-preview').popover('show');
+     }, 
+     function () {
+         $('.image-preview').popover('hide');
+     }
+     );    
 });
     $(function() {
     // Create the close button
