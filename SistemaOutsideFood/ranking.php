@@ -4,12 +4,22 @@ require_once 'assets/php/classes/classServicos.php';
 require_once 'assets/php/classes/classVendas.php';
 $servicos = new Servicos();
 $vendas = new Vendas();
+
+if(isset($_GET['nome'])&&isset($_GET['numero'])){
+  $ranking = $vendas->quantidadePratosFT($_GET['nome'],$_GET['numero']);
+  $rankingBarraca = $vendas->quantidadePratosB($_GET['nome'],$_GET['numero']);
+}else{
+  $ranking = $vendas->quantidadePratosFT();
+   $rankingBarraca = $vendas->quantidadePratosB();
+}
+
 ?>
 <div class="content">
  <div class="container-fluid">
   <div class="collapse navbar-collapse">
    <div class="ripple-container"></div>
  </button>
+ 
 </form>
 </div>
 </div>
@@ -31,7 +41,6 @@ $vendas = new Vendas();
         <tbody>
           <?php
           $i = 0;
-          $ranking = $vendas->quantidadePratosFT();
           while($row = $ranking->fetch(PDO::FETCH_OBJ)){
             $i++;
             ?>
@@ -50,11 +59,10 @@ $vendas = new Vendas();
           <th>Colocação</th>
           <th>Barraca</th>
           <th>Quantidade</th>
-        </thead>
+        </thead>  
         <tbody>
           <?php
           $j=0;
-          $rankingBarraca = $vendas->quantidadePratosB();
           while($rowBarraca = $rankingBarraca->fetch(PDO::FETCH_OBJ)){
             $j++;
             ?>

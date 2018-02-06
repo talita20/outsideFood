@@ -31,10 +31,10 @@ if(sha1($senha) == $login->senha){
 	} else {
 		switch ($_SESSION['tipo']) {
 			case 0:
-		        header("Location: ../../headeradmin.php");
+		        header("Location: ../../admin.php");
 			break;
 			case 1:
-		        header("Location: ../../headercliente.php");
+		        header("Location: ../../cliente.php");
 			break;
 		}
 	}

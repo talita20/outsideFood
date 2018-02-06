@@ -95,6 +95,19 @@ class Vendas
         return $stmt;
     }
     
+    public function quantidadePratosFT2($nome, $numero){
+        $stmt = $this->conn->prepare("SELECT V.quantidade, S.nome FROM vendas AS V, servicos AS S WHERE S.id = V.servicos_id AND S.tipo = 0 AND S.espacos_id IN(SELECT id FROM espacos WHERE id IN(SELECT espacos_id FROM edicoes_has_espacos WHERE edicoes_id IN(SELECT id FROM edicoes WHERE `numero` LIKE :numero AND eventos_id IN(SELECT id FROM eventos WHERE `nome` LIKE :nome )))) ORDER BY V.quantidade DESC");
+        $stmt->bindParam(":id", $this->id);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function quantidadePratosB2($nome, $numero){
+        $stmt = $this->conn->prepare("SELECT V.quantidade, S.nome FROM vendas AS V, servicos AS S WHERE S.id = V.servicos_id AND S.tipo = 1 AND S.espacos_id IN(SELECT id FROM espacos WHERE id IN(SELECT espacos_id FROM edicoes_has_espacos WHERE edicoes_id IN(SELECT id FROM edicoes WHERE `numero` LIKE :numero AND eventos_id IN(SELECT id FROM eventos WHERE `nome` LIKE :nome )))) ORDER BY V.quantidade DESC");
+        $stmt->bindParam(":id", $this->id);
+        $stmt->execute();
+        return $stmt;
+    }
 }
 ?>
 
