@@ -100,9 +100,8 @@ class Edicoes{
     }
 
         //A função abaixo conta a quantidade de cadastros na tabela de acordo com o nome
-    public function contadorPesquisa($nome){
-        $query = "SELECT count(*) FROM `edicoes` WHERE `nome` LIKE '%" . $nome . "%'";
-        $stmt = $this->conn->prepare($query);
+   	public function contadorPesquisa($nome){
+        $stmt = $this->conn->prepare("SELECT count(*) FROM edicoes WHERE eventos_id IN (SELECT id FROM eventos WHERE nome = '%" . $nome . "%');");
         $stmt->bindParam(":nome", $nome);
         $stmt->execute();
         return $stmt->fetchColumn();
@@ -111,7 +110,7 @@ class Edicoes{
     //A função abaixo define o inicio e fim da paginacao
     public function paginacao($limite, $offset){
         try {
-            $query = "SELECT * FROM `eventos` WHERE 1 ORDER BY `nome` ASC LIMIT :limite OFFSET :offset";
+            $query = "SELECT * FROM `edicoes` WHERE 1 ORDER BY `id` ASC LIMIT :limite OFFSET :offset";
             $stmt = $this->conn->prepare($query);
             $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
@@ -126,7 +125,9 @@ class Edicoes{
      //A função abaixo define o inicio e fim da paginacao de acordo com o nome
     public function paginacaoPesquisa($nome, $limite, $offset){
         try {
-            $query = "SELECT * FROM `edicoes` WHERE `nome` LIKE :nome LIMIT :limite OFFSET :offset";
+            $query = "SELECT count(*) FROM edicoes WHERE eventos_id IN (SELECT id FROM eventos WHERE nome = LIKE :nome) LIMIT :limite OFFSET :offset";
+
+             
             $stmt = $this->conn->prepare($query);
             $nome = '%' . $nome . '%';
             $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
