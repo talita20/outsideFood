@@ -6,9 +6,67 @@ require_once 'assets/php/classes/classEspacos.php';
 $servicos = new Servicos();
 $espacos = new Espacos();
 
+<<<<<<< HEAD
+<div class="content">
+         <?php
+      if(isset($warning)){
+        ?>
+        <div class="alert alert-warning">
+          <?php echo $warning; ?>      
+        </div> 
+        <?php }else if(isset($result)) {
+          ?>
+          <div class="alert alert-success">
+            <?php echo $result; ?>
+          </div>
+          <?php
+        }else if(isset($error)){
+          ?>
+          <div class="alert alert-danger">
+            <?php echo $error; ?>
+          </div>
+          <?php
+        }
+        ?>
+ <div class="container-fluid">
+  <div class="collapse navbar-collapse">
+   <a href="./adicionarservico.php">
+       <button type="button" class="btn btn-warning">Adicionar</button>
+   </a>
+   <form class="navbar-form navbar-right" role="search" action="evento.php" method="get">
+    <div class="form-group  is-empty">
+     <input type="text" name="nome" class="form-control" placeholder="Pesquisar">
+     <span class="material-input"></span>
+ </div>
+ <button type="submit" name="pesquisa" class="btn btn-white btn-round btn-just-icon">
+     <i class="material-icons">search</i>
+     <div class="ripple-container"></div>
+ </button>
+</form>
+</div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+   <div class="col-md-12">
+    <div class="card">
+     <div class="card-header" data-background-color="orange">
+      <h4 class="title">Serviço</h4>
+  </div>
+  <div class="card-content table-responsive">
+      <table class="table">
+       <thead class="text-primary">
+        <th>Tipo</th>
+        <th>Salário</th>
+        <th>Espaço</th>
+        <th>Foto</th>
+        <th class="actions">Ações</th>
+    </thead>
+    <tbody>
+=======
 if (isset($_POST['select'])) {
   $servicos->setEspaco($_POST['espacos_id']);
 }
+>>>>>>> 0bf78b2b7dd8cfe797df920b7ff9edb314e59c9a
 
 if(isset($_POST['insert'])){
   $servicos->setNome($_POST['nome']);
@@ -205,4 +263,21 @@ while($row = $todosServicos->fetch(PDO::FETCH_OBJ)){
   <script type="application/javascript">
     var active = document.getElementById("servico");
     active.classList.add("active");
+<<<<<<< HEAD
+</script>
+            <script>
+                  $(document).ready(function() {
+                   setTimeout("$('#temporizador').fadeIn( 300 ).delay( 1500 ).fadeOut( 400 )");
+                  $(".alert-success").fadeTo(1000, 500).slideUp(300, function(){
+                  $(".alert-success").alert('close');
+                  window.location.href = "servico.php";
+                  });
+                  $(".alert-danger").fadeTo(1000, 500).slideUp(300, function(){
+                  $(".alert-danger").alert('close');
+                  window.location.href = "servico.php";
+                  });
+                 });
+               </script>
+=======
   </script>
+>>>>>>> 0bf78b2b7dd8cfe797df920b7ff9edb314e59c9a
