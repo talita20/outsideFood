@@ -19,6 +19,123 @@ TABLE OF CONTENTS
 */
 
 
+
+
+*, *:before, *:after {box-sizing: border-box;}
+body {
+  font-family: 'Raleway', sans-serif;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+    line-height: 1;
+}
+nav ul {float: right; margin: 0;}
+nav li {display: none; float: left; list-style: none;}
+nav a, .hamburger {display: inline-block; color: #fff; 
+    text-transform: uppercase; text-decoration: none; padding: 28px 25px;
+  transition: 0.3s all;}
+nav a:hover, .menu-fixed a:hover {background: #FFC600; color: #FFF}
+.hamburger {
+    float: right;
+}
+.hamburger span {
+    display: inline-block;
+    width: 0;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.hamburger:before {
+    content: '\2630';
+    font-size: 2em;
+}
+
+.inner {
+  padding: 0 3vw;
+}
+section .inner {
+  padding: 50px 3vw;
+  line-height: 1.5;
+}
+section.alternate {
+  background: #000;
+  color: #fff;
+}
+.hero {
+  background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
+  background-size: cover;
+  background-color: rgba(0,0,0,0.5);
+  background-blend-mode: multiply;
+  min-height: 100vh;
+  width: 100%;
+}
+header {
+  position: fixed;
+  width: 100%;
+/*  padding-top: 30px;
+*/  transition: 0.7s all;
+  z-index: 100;
+  background-color: #262626;
+}
+header.menu-fixed {
+  top: 0;
+  right: 0;
+  width: 100%;
+  padding-top: 0;
+  background: ##262626;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  z-index: 2;
+}
+.menu-fixed nav a, .menu-fixed .hamburger {
+    color: #fff;
+}
+.menu-fixed .hamburger {
+    padding: 20px;
+}
+.logo {
+  float: left;
+}
+.logo_svg {
+  display: block;
+  max-width: 150px;
+  max-height: 128px;
+  fill: white;
+    transition: 0.7s all;
+}
+.menu-fixed .logo_svg {
+  max-width: 75px;
+  max-height: 64px;
+    fill: black;
+    margin-top: 6px;
+}
+.logo_svg #logo_text {
+    opacity: 1;
+    transition: 0.7s opacity;
+}
+.menu-fixed .logo_svg #logo_text {
+    opacity: 0;
+}
+
+@media screen and (min-width:721px) {
+    .hamburger {
+        display: none;
+    }
+    nav ul li {
+        display: inline;
+    }
+}
+@media screen and (min-width:960px) {
+    .innerheader {
+        width: 800px;
+        margin: 0 auto;
+    }
+}
+@media screen and (min-width:1201px) {
+    .logo_svg {
+        max-width: 180px;
+        max-height: 154px;
+    }
+}
+
 /* ==========================================================================
     01. General and Typography 
 ========================================================================== */
@@ -207,7 +324,6 @@ section::before,section::after {
     width:80px;
     height:3px;
     bottom:-22px;
-    left:50%;
     margin-left:-40px;
 }
 .story .col-wrapper {
@@ -416,13 +532,13 @@ section::before,section::after {
     10. Footer 
 ========================================================================== */
 .dark-wrapper {
-    background:#ed0121;
+    background:#FFC600;
     color:white;
     font-size:20px;
     font-weight:bold;
 }
 .dark-wrapper .ss-style-top::before {
-    background-image:linear-gradient(315deg,#ed0121 50%,transparent 50%),linear-gradient(45deg,#ed0121 50%,transparent 50%);
+    background-image:linear-gradient(315deg,#FFC600 50%,transparent 50%),linear-gradient(45deg,#FFC600 50%,transparent 50%);
 }
 .social-bar {
     width:100%;
@@ -447,7 +563,7 @@ section::before,section::after {
 }
 
 .themeBy{
-    color: #ed0121;
+    color: #FFC600;
     background: white;
 }
 
@@ -468,8 +584,8 @@ section::before,section::after {
 
 @media (min-width:768px) {
     .navbar-nav {
-        float:none !important;
-        width:100%;
+    /*        float:none !important;
+*/        width:100%;
         text-align:center;
         margin-left:9px;
     }
@@ -481,8 +597,8 @@ section::before,section::after {
         position:absolute;
         display:block !important;
         width:110px;
-        left:50%;
-        margin-left:-55px;
+/*        left:50%;
+*/        margin-left:-55px;
         background:black;
         -webkit-border-radius:0 0 100% 100%;
         -moz-border-radius:0 0 100% 100%;
