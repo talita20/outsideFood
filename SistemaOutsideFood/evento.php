@@ -132,6 +132,26 @@ if(isset($_POST['delete'])){
 
 ?>
 <div class="content">
+   <?php
+ if(isset($warning)){
+  ?>
+  <div class="alert alert-warning">
+    <?php echo $warning; ?>      
+  </div> 
+  <?php }else if(isset($result)) {
+    ?>
+    <div class="alert alert-success">
+      <?php echo $result; ?>
+    </div>
+    <?php
+  }else if(isset($error)){
+    ?>
+    <div class="alert alert-danger">
+      <?php echo $error; ?>
+    </div>
+    <?php
+  }
+  ?>
  <div class="container-fluid">
   <div class="collapse navbar-collapse">
    <a href="./adicionarevento.php">
@@ -251,3 +271,16 @@ for($i=0;$i<sizeof($queryResult);$i++){
        var active = document.getElementById("eventos");
        active.classList.add("active");
      </script>
+       <script>
+    $(document).ready(function() {
+     setTimeout("$('#temporizador').fadeIn( 300 ).delay( 1500 ).fadeOut( 400 )");
+     $(".alert-success").fadeTo(1000, 500).slideUp(300, function(){
+      $(".alert-success").alert('close');
+      window.location.href = "evento.php";
+    });
+     $(".alert-danger").fadeTo(1000, 500).sldideUp(300, function(){
+      $(".alert-danger").alert('close');
+      window.location.href = "evento.php";
+    });
+   });
+ </script>
