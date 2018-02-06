@@ -95,11 +95,8 @@ if(isset($_POST['delete'])){
                  	</a>
                        <form class="navbar-form navbar-right" role="search">
                             <div class="form-group  is-empty">
-<<<<<<< HEAD
-                                <input type="text" name="nome" id="nome" class="form-control" placeholder="Search">
-=======
+                                <input type="text" name="nome" id="nome" class="form-control" placeholder="Pesquisar">
                                 <input type="text" class="form-control" placeholder="Pesquisar">
->>>>>>> e5c0b5e8c343989183a21971a64475103fc6d2c4
                                 <span class="material-input"></span>
                             </div>
                             <button type="submit" name="pesquisa" id="pesquisa"  class="btn btn-white btn-round btn-just-icon">
