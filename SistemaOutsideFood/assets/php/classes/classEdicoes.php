@@ -125,7 +125,7 @@ class Edicoes{
      //A função abaixo define o inicio e fim da paginacao de acordo com o nome
     public function paginacaoPesquisa($nome, $limite, $offset){
         try {
-            $query = "SELECT count(*) FROM edicoes WHERE eventos_id IN (SELECT id FROM eventos WHERE nome = LIKE :nome) LIMIT :limite OFFSET :offset";
+            $query = "SELECT count(*) FROM edicoes WHERE eventos_id IN (SELECT id FROM eventos WHERE nome LIKE :nome) LIMIT :limite OFFSET :offset";
 
              
             $stmt = $this->conn->prepare($query);
