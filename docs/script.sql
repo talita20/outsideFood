@@ -727,7 +727,7 @@ CREATE TABLE `servicos` (
   `id` int(10) UNSIGNED NOT NULL,
   `tipo` tinyint(4) NOT NULL,
   `foto` varchar(255) NOT NULL,
-  `salario` double NOT NULL,
+  `salario` varchar(15) NOT NULL,
   `espacos_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

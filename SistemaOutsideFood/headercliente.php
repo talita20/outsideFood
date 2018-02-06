@@ -71,7 +71,7 @@
 
                     <li class="active-pro" style="padding-bottom: 50px;">
                         
-                        <a href="">
+                        <a href="./index.php">
                             <i class="material-icons">exit_to_app</i>
                             <p>Sair</p>
                         </a>
