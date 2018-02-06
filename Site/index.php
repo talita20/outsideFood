@@ -99,27 +99,27 @@
         <section class="ss-style-top"></section>
         <div class="container inner">
             <h2 class="section-title text-center">Nossa história</h2>
-            <p class="lead main text-center">We're cooking delecious foods since 1879</p>
+            <p class="lead main text-center">Seu restaurante sobre rodas</p>
             <div class="row text-center story">
                 <div class="col-sm-4">
                     <div class="col-wrapper">
                         <div class="icon-wrapper"> <i class="fa fa-anchor"></i> </div>
-                        <h3>EST. 1879</h3>
-                        <p>Vivamus sagittis lacuson augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum ultricies vehicula.</p>
+                        <h3>Desde 2000</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="col-wrapper">
                         <div class="icon-wrapper"> <i class="fa  fa-cutlery"></i> </div>
-                        <h3>Cooking Traditions</h3>
-                        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient monte nascetur ultricies vehicula. </p>
+                        <h3>Qualidade</h3>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore. </p>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="col-wrapper">
                         <div class="icon-wrapper"> <i class="fa fa-coffee"></i> </div>
-                        <h3>Food Quality</h3>
-                        <p>Curabitur blandit matti tempus porttitor. Donec id elit non mi porta ut gravida at eget metus. Consectetur adipiscing elit ultricies vehicula.</p>
+                        <h3>Fidelidade</h3>
+                        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.</p>
                     </div>
                 </div>
             </div>
@@ -190,20 +190,30 @@
             <p class="lead main text-center">Venha fazer parte da nossa rede!</p>
             
             <div class="row text-center chefs" >
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="col-wrapper">
                             <img src="img/placeholder.png">
-                        <h3>Saransh Goila</h3>
-                        <p>Vivamus sagittis lacuson augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum ultricies vehicula.</p>
+                        <h3>Endereço</h3>
+                        <p>Rua Jeová Fiel, 27 - Centro</p>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="col-wrapper">
                         <div class="icon-wrapper">
-                            <img src="img/chefs/3.jpg">
+                            <img src="img/phone.png">
                         </div>
-                        <h3>Jane Doe</h3>
-                        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient monte nascetur ultricies vehicula. </p>
+                        <h3>Telefone</h3>
+                        <p>(31) 66666-6666</p>
+                        <p>(31) 33333-3333</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="col-wrapper">
+                        <div class="icon-wrapper">
+                            <img src="img/email.png">
+                        </div>
+                        <h3>E-mail</h3>
+                        <p>contato@outsidefood.com</p>
                     </div>
                 </div>
             </div>

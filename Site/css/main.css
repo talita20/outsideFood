@@ -523,8 +523,8 @@ section::before,section::after {
     09. Chefs 
 ========================================================================== */
 .chefs img {
-    border:5px solid #e7e7e7;
-    width: 80%;
+    width: 100px;
+    height: 100px;
 }
 
 
