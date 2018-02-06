@@ -11,7 +11,7 @@ $locais = New Locais();
 use JasonGrimes\Paginator;
 
 //Paginacao
-$maxPorPagina = 50;
+$maxPorPagina = 150;
 $paginaAtual = filter_var(isset($_GET['pagina']) ? $_GET['pagina'] : 1, FILTER_SANITIZE_NUMBER_INT);
 
 $url = 'eventos.php?pagina=(:num)';

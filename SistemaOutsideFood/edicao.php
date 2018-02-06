@@ -2,9 +2,35 @@
 require_once 'headeradmin.php';
 require_once 'assets/php/classes/classEdicoes.php';
 require_once 'assets/php/classes/classEventos.php';
+require_once 'assets/vendor/autoload.php';
 
 $edicoes = new Edicoes();
 $eventos = new Eventos();
+use JasonGrimes\Paginator;
+
+
+//Paginacao
+$maxPorPagina = 150;
+$paginaAtual = filter_var(isset($_GET['pagina']) ? $_GET['pagina'] : 1, FILTER_SANITIZE_NUMBER_INT);
+
+$url = 'edicoes.php?pagina=(:num)';
+$inicio = ($maxPorPagina * $paginaAtual) - $maxPorPagina;
+
+if(isset($_GET['nome'])){
+  $quantidade = $edicoes->contadorPesquisa($_GET['nome']);
+  $index = $edicoes->paginacaoPesquisa($_GET['nome'], $maxPorPagina, $inicio);
+  $url = 'edicoes.php?pagina=(:num)&nome=' . $_GET['nome'];
+  $queryResult = $index;
+}else{
+  $quantidade = $edicoes->contador();
+  $index = $edicoes->paginacao($maxPorPagina, $inicio);
+  $queryResult = $index;
+}
+
+$paginator = new Paginator($quantidade, $maxPorPagina, $paginaAtual, $url);
+$paginator->setMaxPagesToShow(7);
+  //Fim paginacao
+
 
 if (isset($_POST['select'])) {
     $edicoes->setEventos($_POST['eventos_id']);
@@ -57,10 +83,10 @@ if(isset($_POST['delete'])){
       </a>
       <form class="navbar-form navbar-right" role="search">
         <div class="form-group  is-empty">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Search">
             <span class="material-input"></span>
         </div>
-        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+        <button type="submit" name="pesquisa" id="pesquisa" class="btn btn-white btn-round btn-just-icon">
             <i class="material-icons">search</i>
             <div class="ripple-container"></div>
         </button>
@@ -118,6 +144,14 @@ if(isset($_POST['delete'])){
                     </table>
                 </div>
             </div>
+            <!-- /#list -->
+                <div id="bottom" class="row" align="center">
+                  <div class="col-md-12">
+                    <?php echo $paginator->toHtml(); ?>
+                  </ul><!-- /.pagination -->
+                </div>
+              </div> <!-- /#bottom -->
+            </div><!-- /#main -->
         </div>
     </div>
 </div>
