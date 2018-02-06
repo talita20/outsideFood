@@ -124,9 +124,9 @@ if(isset($_POST['delete'])){
  $eventos->setId($_POST['id']);
 
  if($eventos->delete() == 1){
-   $result = "apagou";
+   $result = "Evento deletado com sucesso!";
  }else{
-   $error = "erro";
+   $error = "Erro ao deletar. Tente novamente";
  }
 }
 
