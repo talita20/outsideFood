@@ -107,13 +107,53 @@ class Eventos{
 		return $stmt;
 	}
 
-	public function pesquisa($nome){
-        $query = "SELECT * FROM `eventos` WHERE `nome` LIKE '%" . $nome . "%' ORDER BY `nome`";
+	public function contador(){
+        $query = "SELECT count(*) FROM `eventos` WHERE 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
+        //A função abaixo conta a quantidade de cadastros na tabela de acordo com o nome
+    public function contadorPesquisa($nome){
+        $query = "SELECT count(*) FROM `eventos` WHERE `nome` LIKE '%" . $nome . "%'";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":nome", $nome);
         $stmt->execute();
         return $stmt->fetchColumn();
     }
+    
+    //A função abaixo define o inicio e fim da paginacao
+    public function paginacao($limite, $offset){
+        try {
+            $query = "SELECT * FROM `eventos` WHERE 1 ORDER BY `nome` ASC LIMIT :limite OFFSET :offset";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+
+     //A função abaixo define o inicio e fim da paginacao de acordo com o nome
+    public function paginacaoPesquisa($nome, $limite, $offset){
+        try {
+            $query = "SELECT * FROM `eventos` WHERE `nome` LIKE :nome LIMIT :limite OFFSET :offset";
+            $stmt = $this->conn->prepare($query);
+            $nome = '%' . $nome . '%';
+            $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
+            $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
 
 }
 ?>
