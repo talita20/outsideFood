@@ -88,8 +88,8 @@ INSERT INTO `cidades` (`id`, `nome`) VALUES
 
 CREATE TABLE `culinaria` (
   `id` int(10) UNSIGNED NOT NULL,
-  `tipo_culinaria` varchar(45) NOT NULL,
-  `tempo` int(11) NOT NULL
+  `tipo_culinaria` varchar(45),
+  `tempo` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
