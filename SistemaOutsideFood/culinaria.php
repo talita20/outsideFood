@@ -43,7 +43,7 @@
                                                     <td class="nome">Japonesa</td>
                                                         <td class="actions">
                                                         <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
-                                                        <a href="./editaringrediente.php"><i class="material-icons">mode_edit</i></a>
+                                                        <a href="./editarculinaria.php"><i class="material-icons">mode_edit</i></a>
                                                       </td>                                                  
                                                 </tr>
 
