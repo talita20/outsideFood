@@ -29,39 +29,39 @@
       <img style="width: 150px;height: 84px; margin-bottom: 10px; " src="assets/img/oft1.png" >
 
 
-      <form class="form-signin" action="assets/php/login.php" method="post">
+      <form class="form-signin" action="assets/php/validaLogin.php" method="post">
         
         <span id="reauth-email" class="reauth-email"></span>
         
-        <input type="email" class="form-control" name="login" placeholder="E-mail" required autofocus>
+        <input type="email" class="form-control" name="email" placeholder="E-mail" required autofocus>
         
         <input type="password" class="form-control" name="senha" placeholder="Senha" required>
 
 
-        <button class="btn btn-lg btn-primary btn-block btn-signin" id="btnentrar" type="submit">Entrar</button>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" id="btnentrar" type="submit" name="insert">Entrar</button>
 
       </form><!-- /form -->
 
        <p class="text-center text-danger">
             </p>
 
-    <a href="esqueceuSenha.php" data-toggle="modal" data-target="#senha-modal">
+    <!-- <a href="esqueceuSenha.php" data-toggle="modal" data-target="#senha-modal">
       Esqueceu a senha?              
-    </a>
+    </a> -->
   </div><!-- /card-container -->
 </div><!-- /container -->
 
 
 <!-- Modal Esqueci Senha-->
-<div class="modal fade" id="senha-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+<!-- <div class="modal fade" id="senha-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
   <div class="modal-dialog" modal-lg role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="modalLabel">Digite seu e-mail</h4>
-        <div class="modal-body">
+        <div class="modal-body"> -->
          <!-- Text input-->
-         <div id="pf">
+         <!-- <div id="pf">
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">E-mail</label>
             <div class="col-md-8">
@@ -82,7 +82,7 @@
     </div>
   </div>
 </div>
-</div>  
+</div>  --> 
 
 </body>
 </html>
