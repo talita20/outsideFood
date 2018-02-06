@@ -71,6 +71,12 @@
                             <p>Espaços</p>
                         </a>
                     </li>
+                    <li id="culinaria">
+                        <a href="./culinaria.php">
+                            <i class="material-icons">photo_library</i>
+                            <p>Culinária</p>
+                        </a>
+                    </li>
                     <li id="album">
                         <a href="./albumfotos.php">
                             <i class="material-icons">photo_library</i>

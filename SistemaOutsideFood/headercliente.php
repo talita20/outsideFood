@@ -55,6 +55,7 @@
                             <p>Funcionário</p>
                         </a>
                     </li>
+
                     <li id="vendas">
                         <a href="./vendas.php">
                             <i class="material-icons">location_city</i>

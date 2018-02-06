@@ -40,22 +40,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><h2>Meat King</h2></a>
             </div><!-- navbar-header -->
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="" class="navbar-collapse collapse">
             <div class="hidden-xs" id="logo"><a href="#header">
                 <img src="img/logo.png" alt="" style="">
             </a></div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#story">Story</a></li>
-                <li><a href="#reservation">Reservation</a></li>
+                <li><a href="#story">História</a></li>
+                <li><a href="#reservation">Números</a></li>
                 <li><a href="#chefs">Our Chefs</a></li>
-
-                
                 <li><a href="#facts">Facts</a></li>
                 <li><a href="#food-menu">Food Menu</a></li>
-                <li><a href="#special-offser">Special Offers</a></li>
+                <li><a href="../SistemaOutsideFood/index.php">Área Restrita</a></li>
                 
                 <!--fix for scroll spy active menu element-->
                 <li style="display:none;"><a href="#header"></a></li>
@@ -67,17 +64,13 @@
 
     <div id="header">
         <div class="bg-overlay"></div>
-
-
-
-
         <div class="center text-center">
             <div class="banner">
-                <h1 class="">Meat King</h1>
-            </div>
-            <img src="">
-            <div class="subtitle"><h4>AWESOME RESTAURANT THEME</h4></div>
-        </div>
+                <img src="img/oft2.png" style="width: 600px; height: 335px;">
+<!--                 <h1 class="">Meat King</h1>
+ -->            </div>
+<!--             <div class="subtitle"><h4>AWESOME RESTAURANT THEME</h4></div>
+ -->        </div>
         <div class="bottom text-center">
             <a id="scrollDownArrow" href="#"><i class="fa fa-chevron-down"></i></a>
         </div>
@@ -567,3 +560,9 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+
+<script >
+    $("#afazer li").click(function() {
+  $(this).remove();
+});
+</script>

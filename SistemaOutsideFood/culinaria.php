@@ -1,11 +1,12 @@
-<?php
-	require_once 'headercliente.php';
-?>
+ <?php
+ require_once 'headeradmin.php';
+ ?>   
+
 
     <div class="content">
     				<div class="container-fluid">
                     <div class="collapse navbar-collapse">
-                    <a href="./adicionaringrediente.php">
+                    <a href="./adicionarculinaria.php">
                      	<button type="button" class="btn btn-warning">Adicionar</button>
                  	</a>
                        <form class="navbar-form navbar-right" role="search">
@@ -26,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header" data-background-color="orange">
-                                    <h4 class="title">Ingredientes</h4>
+                                    <h4 class="title">Culinária</h4>
                                 </div>
       
                                 <div class="card-content table-responsive">
@@ -39,7 +40,7 @@
 
                                                 <tr>
 
-                                                    <td class="nome"></td>
+                                                    <td class="nome">Japonesa</td>
                                                         <td class="actions">
                                                         <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
                                                         <a href="./editaringrediente.php"><i class="material-icons">mode_edit</i></a>
@@ -79,7 +80,7 @@
         </button>
       </div>
       <div class="modal-body">
-        Dessa excluir esse ingrediente?
+        Dessa excluir essa culinária?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
@@ -101,16 +102,16 @@ require_once 'footer.php';
                    setTimeout("$('#temporizador').fadeIn( 300 ).delay( 1500 ).fadeOut( 400 )");
                   $(".alert-success").fadeTo(1000, 500).slideUp(300, function(){
                   $(".alert-success").alert('close');
-                  window.location.href = "ingredientes.php";
+                  window.location.href = "cunilaria.php";
                   });
                   $(".alert-danger").fadeTo(1000, 500).slideUp(300, function(){
                   $(".alert-danger").alert('close');
-                  window.location.href = "ingredientes.php";
+                  window.location.href = "culinaria.php";
                   });
                  });
                </script>
 
 <script type="application/javascript">
-    var active = document.getElementById("ingredientes");
+    var active = document.getElementById("culinaria");
     active.classList.add("active");
 </script>
