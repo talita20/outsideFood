@@ -1,5 +1,8 @@
 <?php
 	require_once 'headercliente.php';
+    require_once 'assets/php/classes/classIngredientes.php';
+
+    $ingrediente = new Ingredientes();
 ?>
 
            <div class="content">
@@ -12,7 +15,7 @@
                                     <p class="category">Cadastre o ingrediente</p>
                                 </div>
                                 <div class="card-content">
-                                    <form action="cidade.php" method="post">
+                                    <form action="ingredientes.php" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group label-floating">

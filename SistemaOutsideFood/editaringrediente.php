@@ -1,5 +1,10 @@
 <?php
-	require_once 'headercliente.php';
+	require_once 'headercliente.php'; 
+    require_once 'assets/php/classes/classIngredientes.php';
+
+    $ingrediente = new Ingredientes();
+    $ingrediente->setId($_GET['id']);
+    $ing = $ingrediente->view();
 ?>
 
            <div class="content">
@@ -12,18 +17,18 @@
                                     <p class="category">Atualize o ingrediente</p>
                                 </div>
                                 <div class="card-content">
-                                    <form action="cidade.php" method="post">
+                                    <form action="ingredientes.php" method="post">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Nome</label>
-                                                    <input type="text" name="nome" class="form-control">
+                                                    <input type="text" name="nome" value="<?php echo $ing->nome ?>" class="form-control">
                                                 </div>
                                             </div>
                                             
                                         </div>
-                                       
-                                        <button type="submit" name="insert" id="btnamarelo" class="btn btn-primary pull-right">Atualizar Ingrediente</button>
+                                        <input type="hidden" name="id" value="<?php echo $ing->id ?>">
+                                        <button type="submit" name="edit" id="btnamarelo" class="btn btn-primary pull-right">Atualizar Ingrediente</button>
                                         <div class="clearfix"></div>
                                     </form>
                                     </div>

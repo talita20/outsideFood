@@ -1,8 +1,64 @@
 <?php
 	require_once 'headercliente.php';
+  require_once 'assets/php/classes/classIngredientes.php';
+
+    $ingrediente = new Ingredientes();
+
+    if(isset($_POST['insert'])){
+      $ingrediente->setNome($_POST['nome']);
+
+      if($ingrediente->insert() == 1){
+        $result = "Ingrediente inserido com sucesso";
+      }else{
+        $error = "Erro ao inserir";
+      }
+    }
+
+     if(isset($_POST['edit'])){
+      $ingrediente->setId($_POST['id']);
+      $ingrediente->setNome($_POST['nome']);
+
+      if($ingrediente->edit() == 1){
+        $result = "Ingrediente editado com sucesso";
+      }else{
+        $error = "Erro ao editar";
+      }
+    }
+
+
+    if(isset($_POST['delete'])){
+      $ingrediente->setId($_POST['id']);
+
+      if($ingrediente->delete() == 1){
+        $result = "Ingrediente deletado com sucesso";
+      }else{
+        $error = "Erro ao deletar";
+      }
+    }
+
 ?>
 
     <div class="content">
+       <?php
+      if(isset($warning)){
+        ?>
+        <div class="alert alert-warning">
+          <?php echo $warning; ?>      
+        </div> 
+        <?php }else if(isset($result)) {
+          ?>
+          <div class="alert alert-success">
+            <?php echo $result; ?>
+          </div>
+          <?php
+        }else if(isset($error)){
+          ?>
+          <div class="alert alert-danger">
+            <?php echo $error; ?>
+          </div>
+          <?php
+        }
+        ?>
     				<div class="container-fluid">
                     <div class="collapse navbar-collapse">
                     <a href="./adicionaringrediente.php">
@@ -36,17 +92,19 @@
                                              <th class="actions">Ações</th>
                                         </thead>
                                         <tbody>
+                                          <?php $todosIng = $ingrediente->index();
+                                          while($row = $todosIng->fetch(PDO::FETCH_OBJ)){ ?>
 
                                                 <tr>
 
-                                                    <td class="nome"></td>
+                                                    <td class="nome"><?php echo $row->nome ?></td>
                                                         <td class="actions">
-                                                        <a href="" data-toggle="modal" data-target="#exampleModal" ><i class="material-icons">delete</i></a>
-                                                        <a href="./editaringrediente.php"><i class="material-icons">mode_edit</i></a>
+                                                        <a href="" data-toggle="modal" data-target="#exampleModal<?php echo $row->id ?>" ><i class="material-icons">delete</i></a>
+                                                        <a href="./editaringrediente.php?id=<?php echo $row->id ?>"><i class="material-icons">mode_edit</i></a>
                                                       </td>                                                  
                                                 </tr>
 
-
+                                                <?php } ?>
                                                                     
                                         </tbody>
                                     </table>
@@ -67,8 +125,10 @@
 
 
 <!-- Modal -->
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php $todosIng = $ingrediente->index();
+                                          while($row = $todosIng->fetch(PDO::FETCH_OBJ)){ ?>
+                                          <form action="ingredientes.php" method="post">
+<div class="modal fade" id="exampleModal<?php echo $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <form action="cidade.php" method="post">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -83,14 +143,15 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-        <input type="hidden" name="id" value="">
+        <input type="hidden" name="id" value="<?php echo $row->id ?>">
         <button id="btnamarelo" type="submit" name="delete" class="btn btn-primary">Sim</button>
       </div>
     </div>
   </div>
   </form>
 </div>
-
+</form>
+<?php } ?>
 <?php
 require_once 'footer.php';
 ?>

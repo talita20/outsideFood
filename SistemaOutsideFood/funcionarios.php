@@ -4,12 +4,12 @@ require_once 'headercliente.php';
 require_once 'assets/php/classes/classFuncionarios.php';
 require_once 'assets/php/classes/classServicos.php';
 require_once 'assets/php/classes/classCulinaria.php';
-require_once 'assets/php/classes/classFuncionariosHasCulinaria.php';
+//require_once 'assets/php/classes/classFuncionariosHasCulinaria.php';
 
 $funcionarios = new Funcionarios();
 $servicos= new Servicos();
 $culinaria = new Culinaria();
-$fhc= new FuncionariosHasCulinaria();
+//$fhc= new FuncionariosHasCulinaria();
 
 if (isset($_POST['select'])) {
     $servicos->setServicos($_POST['servicos_id']);
@@ -21,9 +21,9 @@ if(isset($_POST['insert'])){
   $funcionarios->setNome($_POST['nome']);
   $funcionarios->setTipo($_POST['tipo']);
   $funcionarios->setServicos($_POST['servicos_id']);
-  $funcionarios->setCulinaria($_POST['culinaria_id']);
+  //$funcionarios->setCulinaria($_POST['culinaria_id']);
   $funcionariosid=$funcionarios->insert();
-  $fhc->setFuncionarios($funcionariosid);
+  //$fhc->setFuncionarios($funcionariosid);
    //$fhc->setCulinaria($)
 
   if($funcionarios->insert() == 1){
@@ -48,15 +48,35 @@ if(isset($_POST['edit'])){
 if(isset($_POST['delete'])){
   $funcionarios->setId($_POST['id']);
   if($funcionarios->delete() == 1){
-    $result = "apagou";
+    $result = "Deletado";
   }else{
-    $error = "erro";
+    $error = "Erro ao deletar";
   }
 }
 ?>
 
 
 <div class="content">
+  <?php
+      if(isset($warning)){
+        ?>
+        <div class="alert alert-warning">
+          <?php echo $warning; ?>      
+        </div> 
+        <?php }else if(isset($result)) {
+          ?>
+          <div class="alert alert-success">
+            <?php echo $result; ?>
+          </div>
+          <?php
+        }else if(isset($error)){
+          ?>
+          <div class="alert alert-danger">
+            <?php echo $error; ?>
+          </div>
+          <?php
+        }
+        ?>
  <div class="container-fluid">
   <div class="collapse navbar-collapse">
    <a href="./adicionarfuncionario.php">

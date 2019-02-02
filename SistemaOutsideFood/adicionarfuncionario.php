@@ -3,22 +3,22 @@
  require_once 'assets/php/classes/classFuncionarios.php';
 require_once 'assets/php/classes/classServicos.php';
 require_once 'assets/php/classes/classCulinaria.php';      
-require_once 'assets/php/classes/classFuncionariosHasCulinaria.php';
+//require_once 'assets/php/classes/classFuncionariosHasCulinaria.php';
    $funcionarios= new Funcionarios();
    $servicos= new Servicos();
    $culinaria= new Culinaria();
-   $fhc=New FuncionariosHasCulinaria();
+  // $fhc=New FuncionariosHasCulinaria();
 
    if(isset($_POST['insert'])){
   $funcionarios->setNome($_POST['nome']);
   $funcionarios->setTipo($_POST['tipo']);
   $funcionarios->setServicos($_POST['servicos_id']);
   $funcionariosid=$funcionarios->insert();
-  if(isset($_POST['culinaria_id'])){
+  /*if(isset($_POST['culinaria_id'])){
     $fhc->setFuncionarios($funcionariosid);
     $fhc->setCulinaria($_POST['culinaria_id']);
     $fhc->insert();
-  }
+  }*/
   }
 
  ?>   
@@ -33,7 +33,7 @@ require_once 'assets/php/classes/classFuncionariosHasCulinaria.php';
                         <p class="category">Cadastre seu funcionário</p>
                     </div>
                     <div class="card-content">
-                        <form action="adicionarfuncionario.php" method="post" enctype="multipart/form-data">
+                        <form action="funcionarios.php" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
